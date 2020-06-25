@@ -16,7 +16,7 @@ namespace InstantImprovement
             String classifier_name = SplitCamelCase(((String)value));
             classifier_name = classifier_name.ToLower().Replace(" ", "_");
             return new Uri("pack://application:,,,/InstantImprovement;component/Resources/" + classifier_name + "." +((String) parameter));
-            //return new Uri(String.Format("pack://application:,,,/{0}.jpg", ((String)value).ToLower()));
+            // return new Uri(String.Format("pack://application:,,,/{0}.jpg", ((String)value).ToLower()));
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)

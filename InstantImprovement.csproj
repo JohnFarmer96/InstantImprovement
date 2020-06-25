@@ -122,8 +122,7 @@
     <None Include="$(ProjectDir)App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="$(ProjectDir)Resources\AffectivaLogo1.png" />
-    <Resource Include="$(ProjectDir)Resources\AffdexMe_Logo.ico" />
+    <Resource Include="C:\Projects\ProVIL\Resources\AffectivaLogo1.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\00.png" />
@@ -150,39 +149,10 @@
     <Resource Include="Resources\9786.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\anger.gif" />
-    <Resource Include="Resources\attention.gif" />
-    <Resource Include="Resources\brow_furrow.gif" />
-    <Resource Include="Resources\brow_raise.gif" />
-    <Resource Include="Resources\chin_raise.gif" />
-    <Resource Include="Resources\contempt.gif" />
-    <Resource Include="Resources\disgust.gif" />
-    <Resource Include="Resources\engagement.gif" />
-    <Resource Include="Resources\eye_closure.gif" />
-    <Resource Include="Resources\fear.gif" />
-    <Resource Include="Resources\frown.gif" />
-    <Resource Include="Resources\inner_brow_raise.gif" />
-    <Resource Include="Resources\joy.gif" />
-    <Resource Include="Resources\lip_press.gif" />
-    <Resource Include="Resources\lip_pucker.gif" />
-    <Resource Include="Resources\lip_suck.gif" />
-    <Resource Include="Resources\mouth_open.gif" />
-    <Resource Include="Resources\negative_valence.gif" />
-    <Resource Include="Resources\nose_wrinkle.gif" />
-    <Resource Include="Resources\positive_valence.gif" />
-    <Resource Include="Resources\sadness.gif" />
-    <Resource Include="Resources\smile.gif" />
-    <Resource Include="Resources\smirk.gif" />
-    <Resource Include="Resources\surprise.gif" />
-    <Resource Include="Resources\upper_lip_raise.gif" />
-    <Resource Include="Resources\valence.gif" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Resources\anger.jpg" />
     <Resource Include="Resources\attention.jpg" />
     <Resource Include="Resources\brow_furrow.jpg" />
     <Resource Include="Resources\brow_raise.jpg" />
-    <Resource Include="Resources\chin_raise.jpg" />
     <Resource Include="Resources\contempt.jpg" />
     <Resource Include="Resources\disgust.jpg" />
     <Resource Include="Resources\engagement.jpg" />
@@ -191,18 +161,14 @@
     <Resource Include="Resources\frown.jpg" />
     <Resource Include="Resources\inner_brow_raise.jpg" />
     <Resource Include="Resources\joy.jpg" />
-    <Resource Include="Resources\lip_press.jpg" />
-    <Resource Include="Resources\lip_pucker.jpg" />
     <Resource Include="Resources\lip_suck.jpg" />
     <Resource Include="Resources\mouth_open.jpg" />
     <Resource Include="Resources\negative_valence.jpg" />
-    <Resource Include="Resources\nose_wrinkle.jpg" />
     <Resource Include="Resources\positive_valence.jpg" />
     <Resource Include="Resources\sadness.jpg" />
     <Resource Include="Resources\smile.jpg" />
     <Resource Include="Resources\smirk.jpg" />
     <Resource Include="Resources\surprise.jpg" />
-    <Resource Include="Resources\upper_lip_raise.jpg" />
     <Resource Include="Resources\valence.jpg" />
   </ItemGroup>
   <ItemGroup>

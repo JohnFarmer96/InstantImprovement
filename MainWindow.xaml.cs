@@ -330,8 +330,6 @@ namespace InstantImprovement
                 btnAppShot.IsEnabled = 
                 btnExit.IsEnabled = true;
 
-                ToggleFunctionButtons();
-
                 // Instantiate CameraDetector using default camera ID
                 const int cameraId = 0;
                 const int numberOfFaces = 10;
@@ -386,17 +384,6 @@ namespace InstantImprovement
         }
 
         /// <summary>
-        /// Toggle Buttons to grant functionality when entering and leaving camera-mode
-        /// </summary>
-        private void ToggleFunctionButtons()
-        {
-            Features.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
-            FacePoints.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
-            FeatureEmojis.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
-            UserEmoji.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
-        }
-
-        /// <summary>
         /// Resets the camera processing.
         /// </summary>
         private void ResetCameraProcessing()
@@ -425,8 +412,6 @@ namespace InstantImprovement
                     Detector.Dispose();
                     Detector = null;
                 }
-
-                ToggleFunctionButtons();
 
                 // Enable/Disable buttons on start
                 btnStartCamera.IsEnabled = true;
