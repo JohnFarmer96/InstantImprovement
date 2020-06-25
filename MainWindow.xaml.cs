@@ -347,7 +347,7 @@ namespace AffdexMe
                 Detector.setProcessStatusListener(this);
 
                 // Set the License Path
-                Detector.setLicenseString(FilePath.GetAffdexLicense());
+                // Detector.setLicenseString(FilePath.GetAffdexLicense());
 
                 Detector.start();
 

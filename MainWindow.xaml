@@ -155,7 +155,7 @@
                     <Image Name="cameraDisplay" Visibility="Hidden" HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="UniformToFill"/>
 
                     <Image Name="logoBackground" Margin="40,40,40,85" Width="auto" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
-                            Height="auto" Source="Resources\AffectivaLogo1.png" Visibility="Visible"/>
+                            Height="auto" Source="Resources\exponentials_Logo.png" Visibility="Visible"/>
 
                     <affdexMe:DrawingCanvas x:Name="canvas" HorizontalAlignment="Center" VerticalAlignment="Center" />
                     <Label Name="appShotLocLabel" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{StaticResource appShotLocLabelStyle}" />

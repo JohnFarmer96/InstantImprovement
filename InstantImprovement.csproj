@@ -1,0 +1,225 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{5B893EA1-EB11-425A-BF8A-05822F5E2C9A}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>InstantImprovement</RootNamespace>
+    <AssemblyName>InstantImprovement</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>$(ProjectDir)Resources\AffdexMe_Logo.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>ManagedMinimumRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Affdex, Version=3.4.0.550, Culture=neutral, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Program Files (x86)\Affectiva\Affdex SDK\bin\release\Affdex.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="WpfAnimatedGif">
+      <HintPath>$(ProjectDir)packages\WpfAnimatedGif.1.4.13\lib\net\WpfAnimatedGif.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DrawingCanvas.cs" />
+    <Compile Include="FilePath.cs" />
+    <Compile Include="MetricSelectionUI.xaml.cs" />
+    <Compile Include="NameToResourceConverter.cs" />
+    <Compile Include="UpperCaseConverter.cs" />
+    <Page Include="$(ProjectDir)MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(ProjectDir)MainWindow.xaml.cs">
+      <DependentUpon>$(ProjectDir)MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="MetricSelectionUI.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="$(ProjectDir)Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(ProjectDir)Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="$(ProjectDir)Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>$(ProjectDir)Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>$(ProjectDir)Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="$(ProjectDir)Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>$(ProjectDir)Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="$(ProjectDir)Properties\" />
+    <Resource Include="Resources\Square.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="$(ProjectDir)App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="$(ProjectDir)Resources\AffectivaLogo1.png" />
+    <Resource Include="$(ProjectDir)Resources\AffdexMe_Logo.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\00.png" />
+    <Resource Include="Resources\01.png" />
+    <Resource Include="Resources\10.png" />
+    <Resource Include="Resources\11.png" />
+    <Resource Include="Resources\20.png" />
+    <Resource Include="Resources\21.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\128515.png" />
+    <Resource Include="Resources\128518.png" />
+    <Resource Include="Resources\128521.png" />
+    <Resource Include="Resources\128527.png" />
+    <Resource Include="Resources\128528.png" />
+    <Resource Include="Resources\128535.png" />
+    <Resource Include="Resources\128537.png" />
+    <Resource Include="Resources\128539.png" />
+    <Resource Include="Resources\128540.png" />
+    <Resource Include="Resources\128542.png" />
+    <Resource Include="Resources\128545.png" />
+    <Resource Include="Resources\128561.png" />
+    <Resource Include="Resources\128563.png" />
+    <Resource Include="Resources\9786.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\anger.gif" />
+    <Resource Include="Resources\attention.gif" />
+    <Resource Include="Resources\brow_furrow.gif" />
+    <Resource Include="Resources\brow_raise.gif" />
+    <Resource Include="Resources\chin_raise.gif" />
+    <Resource Include="Resources\contempt.gif" />
+    <Resource Include="Resources\disgust.gif" />
+    <Resource Include="Resources\engagement.gif" />
+    <Resource Include="Resources\eye_closure.gif" />
+    <Resource Include="Resources\fear.gif" />
+    <Resource Include="Resources\frown.gif" />
+    <Resource Include="Resources\inner_brow_raise.gif" />
+    <Resource Include="Resources\joy.gif" />
+    <Resource Include="Resources\lip_press.gif" />
+    <Resource Include="Resources\lip_pucker.gif" />
+    <Resource Include="Resources\lip_suck.gif" />
+    <Resource Include="Resources\mouth_open.gif" />
+    <Resource Include="Resources\negative_valence.gif" />
+    <Resource Include="Resources\nose_wrinkle.gif" />
+    <Resource Include="Resources\positive_valence.gif" />
+    <Resource Include="Resources\sadness.gif" />
+    <Resource Include="Resources\smile.gif" />
+    <Resource Include="Resources\smirk.gif" />
+    <Resource Include="Resources\surprise.gif" />
+    <Resource Include="Resources\upper_lip_raise.gif" />
+    <Resource Include="Resources\valence.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\anger.jpg" />
+    <Resource Include="Resources\attention.jpg" />
+    <Resource Include="Resources\brow_furrow.jpg" />
+    <Resource Include="Resources\brow_raise.jpg" />
+    <Resource Include="Resources\chin_raise.jpg" />
+    <Resource Include="Resources\contempt.jpg" />
+    <Resource Include="Resources\disgust.jpg" />
+    <Resource Include="Resources\engagement.jpg" />
+    <Resource Include="Resources\eye_closure.jpg" />
+    <Resource Include="Resources\fear.jpg" />
+    <Resource Include="Resources\frown.jpg" />
+    <Resource Include="Resources\inner_brow_raise.jpg" />
+    <Resource Include="Resources\joy.jpg" />
+    <Resource Include="Resources\lip_press.jpg" />
+    <Resource Include="Resources\lip_pucker.jpg" />
+    <Resource Include="Resources\lip_suck.jpg" />
+    <Resource Include="Resources\mouth_open.jpg" />
+    <Resource Include="Resources\negative_valence.jpg" />
+    <Resource Include="Resources\nose_wrinkle.jpg" />
+    <Resource Include="Resources\positive_valence.jpg" />
+    <Resource Include="Resources\sadness.jpg" />
+    <Resource Include="Resources\smile.jpg" />
+    <Resource Include="Resources\smirk.jpg" />
+    <Resource Include="Resources\surprise.jpg" />
+    <Resource Include="Resources\upper_lip_raise.jpg" />
+    <Resource Include="Resources\valence.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="C:\Program Files %28x86%29\Affectiva\Affdex SDK\bin\release\affdex-native.dll">
+      <Link>affdex-native.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

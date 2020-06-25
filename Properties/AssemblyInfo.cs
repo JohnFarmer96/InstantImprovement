@@ -7,11 +7,11 @@ using System.Windows;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("AffdexMe")]
+[assembly: AssemblyTitle("InstantImprovement")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Affectiva Inc.")]
-[assembly: AssemblyProduct("AffdexMe")]
+[assembly: AssemblyCompany("eXponentials Project Group - supported by Affectiva Inc.")]
+[assembly: AssemblyProduct("InstantImprovement")]
 [assembly: AssemblyCopyright("Copyright © 2015 Affectiva Inc.")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
