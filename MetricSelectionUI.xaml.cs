@@ -16,7 +16,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using WpfAnimatedGif;
 
-namespace AffdexMe
+namespace InstantImprovement
 {
     /// <summary>
     /// Interaction logic for Window1.xaml

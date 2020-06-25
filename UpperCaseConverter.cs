@@ -5,7 +5,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace AffdexMe
+namespace InstantImprovement
 {
     public class UpperCaseConverter : System.Windows.Data.IValueConverter
     {

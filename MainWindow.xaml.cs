@@ -10,7 +10,7 @@ using System.Windows.Shapes;
 using System.IO;
 
 
-namespace AffdexMe
+namespace InstantImprovement
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -37,7 +37,7 @@ namespace AffdexMe
             logoBackground.Visibility = Visibility.Visible;
             cornerLogo.Visibility = Visibility.Hidden;
 
-            EnabledClassifiers = AffdexMe.Settings.Default.Classifiers;
+            EnabledClassifiers = InstantImprovement.Settings.Default.Classifiers;
             canvas.MetricNames = EnabledClassifiers;
 
             // Enable/Disable buttons on start
@@ -65,14 +65,14 @@ namespace AffdexMe
             btnExit.Click += btnExit_Click;
             btnAppShot.Click += btnAppShot_Click;
 
-            ShowEmojis = canvas.DrawEmojis = AffdexMe.Settings.Default.ShowEmojis;
-            ShowAppearance = canvas.DrawAppearance = AffdexMe.Settings.Default.ShowAppearance;
-            ShowFacePoints = canvas.DrawPoints = AffdexMe.Settings.Default.ShowPoints;
-            ShowMetrics = canvas.DrawMetrics = AffdexMe.Settings.Default.ShowMetrics;
-            changeButtonStyle(Emojis, AffdexMe.Settings.Default.ShowEmojis);
-            changeButtonStyle(Appearance, AffdexMe.Settings.Default.ShowAppearance);
-            changeButtonStyle(Points, AffdexMe.Settings.Default.ShowPoints);
-            changeButtonStyle(Metrics, AffdexMe.Settings.Default.ShowMetrics);
+            ShowEmojis = canvas.DrawEmojis = InstantImprovement.Settings.Default.ShowEmojis;
+            ShowAppearance = canvas.DrawAppearance = InstantImprovement.Settings.Default.ShowAppearance;
+            ShowFacePoints = canvas.DrawPoints = InstantImprovement.Settings.Default.ShowPoints;
+            ShowMetrics = canvas.DrawMetrics = InstantImprovement.Settings.Default.ShowMetrics;
+            changeButtonStyle(Emojis, InstantImprovement.Settings.Default.ShowEmojis);
+            changeButtonStyle(Appearance, InstantImprovement.Settings.Default.ShowAppearance);
+            changeButtonStyle(Points, InstantImprovement.Settings.Default.ShowPoints);
+            changeButtonStyle(Metrics, InstantImprovement.Settings.Default.ShowMetrics);
 
             this.ContentRendered += MainWindow_ContentRendered;
         }
@@ -128,7 +128,7 @@ namespace AffdexMe
         /// <param name="ex">The <see cref="Affdex.AffdexException"/> instance containing the exception details.</param>
         public void onProcessingException(Affdex.AffdexException ex)
         {
-            String message = String.IsNullOrEmpty(ex.Message) ? "AffdexMe error encountered." : ex.Message;
+            String message = String.IsNullOrEmpty(ex.Message) ? "InstantImprovement error encountered." : ex.Message;
             ShowExceptionAndShutDown(message);
         }
 
@@ -146,7 +146,7 @@ namespace AffdexMe
         private void ShowExceptionAndShutDown(String exceptionMessage)
         {
             MessageBoxResult result = MessageBox.Show(exceptionMessage,
-                                                        "AffdexMe Error",
+                                                        "InstantImprovement Error",
                                                         MessageBoxButton.OK,
                                                         MessageBoxImage.Error);
             this.Dispatcher.BeginInvoke((Action)(() =>
@@ -176,7 +176,7 @@ namespace AffdexMe
             }
             catch(Exception ex)
             {
-                String message = String.IsNullOrEmpty(ex.Message) ? "AffdexMe error encountered." : ex.Message;
+                String message = String.IsNullOrEmpty(ex.Message) ? "InstantImprovement error encountered." : ex.Message;
                 ShowExceptionAndShutDown(message);
             }
 
@@ -212,7 +212,7 @@ namespace AffdexMe
             }
             catch(Exception ex)
             {
-                String message = String.IsNullOrEmpty(ex.Message) ? "AffdexMe error encountered." : ex.Message;
+                String message = String.IsNullOrEmpty(ex.Message) ? "InstantImprovement error encountered." : ex.Message;
                 ShowExceptionAndShutDown(message);
             }
         }
@@ -247,7 +247,7 @@ namespace AffdexMe
                 }
                 catch (Exception ex)
                 {
-                    String message = String.IsNullOrEmpty(ex.Message) ? "AffdexMe error encountered." : ex.Message;
+                    String message = String.IsNullOrEmpty(ex.Message) ? "InstantImprovement error encountered." : ex.Message;
                     ShowExceptionAndShutDown(message);
                 }
             }));
@@ -258,12 +258,12 @@ namespace AffdexMe
         /// </summary>
         void SaveSettings()
         {
-            AffdexMe.Settings.Default.ShowPoints = ShowFacePoints;
-            AffdexMe.Settings.Default.ShowAppearance = ShowAppearance;
-            AffdexMe.Settings.Default.ShowEmojis = ShowEmojis;
-            AffdexMe.Settings.Default.ShowMetrics = ShowMetrics;
-            AffdexMe.Settings.Default.Classifiers = EnabledClassifiers;
-            AffdexMe.Settings.Default.Save();
+            InstantImprovement.Settings.Default.ShowPoints = ShowFacePoints;
+            InstantImprovement.Settings.Default.ShowAppearance = ShowAppearance;
+            InstantImprovement.Settings.Default.ShowEmojis = ShowEmojis;
+            InstantImprovement.Settings.Default.ShowMetrics = ShowMetrics;
+            InstantImprovement.Settings.Default.Classifiers = EnabledClassifiers;
+            InstantImprovement.Settings.Default.Save();
         }
 
         /// <summary>
@@ -291,7 +291,7 @@ namespace AffdexMe
             }
             catch (Exception ex)
             {
-                String message = String.IsNullOrEmpty(ex.Message) ? "AffdexMe error encountered." : ex.Message;
+                String message = String.IsNullOrEmpty(ex.Message) ? "InstantImprovement error encountered." : ex.Message;
                 ShowExceptionAndShutDown(message);
             }
         }
@@ -365,7 +365,7 @@ namespace AffdexMe
                     if (ex.Message.Equals("Unable to open webcam."))
                     {
                         MessageBoxResult result = MessageBox.Show(ex.Message,
-                                                                "AffdexMe Error",
+                                                                "InstantImprovement Error",
                                                                 MessageBoxButton.OK,
                                                                 MessageBoxImage.Error);
                         StopCameraProcessing();
@@ -373,12 +373,12 @@ namespace AffdexMe
                     }
                 }
 
-                String message = String.IsNullOrEmpty(ex.Message) ? "AffdexMe error encountered." : ex.Message;
+                String message = String.IsNullOrEmpty(ex.Message) ? "InstantImprovement error encountered." : ex.Message;
                 ShowExceptionAndShutDown(message);
             }
             catch (Exception ex)
             {
-                String message = String.IsNullOrEmpty(ex.Message) ? "AffdexMe error encountered." : ex.Message;
+                String message = String.IsNullOrEmpty(ex.Message) ? "InstantImprovement error encountered." : ex.Message;
                 ShowExceptionAndShutDown(message);
             }
         }
@@ -394,7 +394,7 @@ namespace AffdexMe
             }
             catch (Exception ex)
             {
-                String message = String.IsNullOrEmpty(ex.Message) ? "AffdexMe error encountered." : ex.Message;
+                String message = String.IsNullOrEmpty(ex.Message) ? "InstantImprovement error encountered." : ex.Message;
                 ShowExceptionAndShutDown(message);
             }
         }
@@ -422,7 +422,7 @@ namespace AffdexMe
             }
             catch (Exception ex)
             {
-                String message = String.IsNullOrEmpty(ex.Message) ? "AffdexMe error encountered." : ex.Message;
+                String message = String.IsNullOrEmpty(ex.Message) ? "InstantImprovement error encountered." : ex.Message;
                 ShowExceptionAndShutDown(message);
             }
         }
@@ -494,13 +494,13 @@ namespace AffdexMe
             try
             {
                 String picturesFolder = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
-                String fileName = String.Format("AffdexMe ScreenShot {0:MMMM dd yyyy h mm ss}.png", DateTime.Now);
+                String fileName = String.Format("InstantImprovement ScreenShot {0:MMMM dd yyyy h mm ss}.png", DateTime.Now);
                 fileName = System.IO.Path.Combine(picturesFolder, fileName);
                 this.TakeScreenShot(fileName);
             }
             catch (Exception ex)
             {
-                String message = String.Format("AffdexMe error encountered while trying to take a screenshot, details={0}", ex.Message);
+                String message = String.Format("InstantImprovement error encountered while trying to take a screenshot, details={0}", ex.Message);
                 ShowExceptionAndShutDown(message);
             }
         }
@@ -576,7 +576,7 @@ namespace AffdexMe
             }
             catch (Exception ex)
             {
-                String message = String.IsNullOrEmpty(ex.Message) ? "AffdexMe error encountered." : ex.Message;
+                String message = String.IsNullOrEmpty(ex.Message) ? "InstantImprovement error encountered." : ex.Message;
                 ShowExceptionAndShutDown(message);
             }
         }

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
-namespace AffdexMe
+namespace InstantImprovement
 {
     public class DrawingCanvas: System.Windows.Controls.Canvas
     {

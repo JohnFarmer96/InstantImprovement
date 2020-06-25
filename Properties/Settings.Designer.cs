@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace AffdexMe
+namespace InstantImprovement
 {
 
 

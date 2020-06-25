@@ -1,7 +1,7 @@
-﻿<Window x:Class="AffdexMe.MetricSelectionUI"
+﻿<Window x:Class="InstantImprovement.MetricSelectionUI"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:affdexMe="clr-namespace:AffdexMe"
+        xmlns:InstantImprovement="clr-namespace:InstantImprovement"
         xmlns:gif="http://wpfanimatedgif.codeplex.com"
         Title="Select Emotions or Expressions" 
         Height="640" Width="514" ResizeMode="NoResize" Closing="Window_Closing">
@@ -9,8 +9,8 @@
         <ScrollViewer Margin="0,0,0,45">
             <Grid Name="theGrid" Background="Black">
                 <Grid.Resources>
-                    <affdexMe:UpperCaseConverter x:Key="StringToUpper" />
-                    <affdexMe:NameToResourceConverter x:Key="ResourceFileName" />
+                    <InstantImprovement:UpperCaseConverter x:Key="StringToUpper" />
+                    <InstantImprovement:NameToResourceConverter x:Key="ResourceFileName" />
                 </Grid.Resources>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="160" />

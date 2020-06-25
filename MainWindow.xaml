@@ -1,7 +1,7 @@
-﻿<Window x:Class="AffdexMe.MainWindow"
+﻿<Window x:Class="InstantImprovement.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:affdexMe="clr-namespace:AffdexMe;assembly="
+        xmlns:InstantImprovement="clr-namespace:InstantImprovement;assembly="
         Title="Instant Improvement" 
         Height="720" Width="1280"
         MinHeight="640" MinWidth="480"
@@ -157,7 +157,7 @@
                     <Image Name="logoBackground" Margin="40,40,40,85" Width="auto" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
                             Height="auto" Source="Resources\exponentials_Logo.png" Visibility="Visible"/>
 
-                    <affdexMe:DrawingCanvas x:Name="canvas" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    <InstantImprovement:DrawingCanvas x:Name="canvas" HorizontalAlignment="Center" VerticalAlignment="Center" />
                     <Label Name="appShotLocLabel" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{StaticResource appShotLocLabelStyle}" />
                 </Grid>
             </StackPanel>

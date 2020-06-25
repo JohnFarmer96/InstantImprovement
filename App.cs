@@ -8,7 +8,7 @@ using System.Windows;
 
 using Microsoft.VisualBasic.ApplicationServices;
 
-namespace AffdexMe
+namespace InstantImprovement
 {
     /// <summary>
     /// Interaction logic for App.xaml
