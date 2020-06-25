@@ -8,7 +8,7 @@ using System.Windows.Media.Imaging;
 using System.Reflection;
 using System.Windows.Shapes;
 using System.IO;
-
+using System.Windows.Controls.Primitives;
 
 namespace InstantImprovement
 {
@@ -45,22 +45,22 @@ namespace InstantImprovement
             btnExit.IsEnabled = true;
 
             btnStartCamera.IsEnabled =
-            btnResetCamera.IsEnabled =
-            Points.IsEnabled =
-            Metrics.IsEnabled =
-            Appearance.IsEnabled =
-            Emojis.IsEnabled =
-            btnResetCamera.IsEnabled =
-            btnAppShot.IsEnabled =
+            btnResetCamera.IsEnabled = 
+            FacePoints.IsEnabled = 
+            Features.IsEnabled =
+            UserEmoji.IsEnabled = 
+            FeatureEmojis.IsEnabled = 
+            btnResetCamera.IsEnabled = 
+            btnAppShot.IsEnabled = 
             btnStopCamera.IsEnabled = false;
 
             // Initialize Button Click Handlers
             btnStartCamera.Click += btnStartCamera_Click;
             btnStopCamera.Click += btnStopCamera_Click;
-            Points.Click += Points_Click;
-            Emojis.Click += Emojis_Click;
-            Appearance.Click += Appearance_Click;
-            Metrics.Click += Metrics_Click;
+            FacePoints.Click += FacePoints_Click;
+            FeatureEmojis.Click += FeatureEmojis_Click;
+            UserEmoji.Click += UserEmoji_Click;
+            Features.Click += Features_Click;
             btnResetCamera.Click += btnResetCamera_Click;
             btnExit.Click += btnExit_Click;
             btnAppShot.Click += btnAppShot_Click;
@@ -69,10 +69,10 @@ namespace InstantImprovement
             ShowAppearance = canvas.DrawAppearance = InstantImprovement.Settings.Default.ShowAppearance;
             ShowFacePoints = canvas.DrawPoints = InstantImprovement.Settings.Default.ShowPoints;
             ShowMetrics = canvas.DrawMetrics = InstantImprovement.Settings.Default.ShowMetrics;
-            changeButtonStyle(Emojis, InstantImprovement.Settings.Default.ShowEmojis);
-            changeButtonStyle(Appearance, InstantImprovement.Settings.Default.ShowAppearance);
-            changeButtonStyle(Points, InstantImprovement.Settings.Default.ShowPoints);
-            changeButtonStyle(Metrics, InstantImprovement.Settings.Default.ShowMetrics);
+            changeButtonStyle(FeatureEmojis, InstantImprovement.Settings.Default.ShowEmojis);
+            changeButtonStyle(UserEmoji, InstantImprovement.Settings.Default.ShowAppearance);
+            changeButtonStyle(FacePoints, InstantImprovement.Settings.Default.ShowPoints);
+            changeButtonStyle(Features, InstantImprovement.Settings.Default.ShowMetrics);
 
             this.ContentRendered += MainWindow_ContentRendered;
         }
@@ -283,10 +283,10 @@ namespace InstantImprovement
                 // Show the logo
                 logoBackground.Visibility = Visibility.Visible;
 
-                Points.IsEnabled =
-                Metrics.IsEnabled =
-                Appearance.IsEnabled =
-                Emojis.IsEnabled = false;
+                FacePoints.IsEnabled =
+                Features.IsEnabled =
+                UserEmoji.IsEnabled =
+                FeatureEmojis.IsEnabled = false;
 
             }
             catch (Exception ex)
@@ -322,13 +322,15 @@ namespace InstantImprovement
             {
                 btnStartCamera.IsEnabled = false;
                 btnResetCamera.IsEnabled =
-                Points.IsEnabled =
-                Metrics.IsEnabled =
-                Appearance.IsEnabled =
-                Emojis.IsEnabled =
+                FacePoints.IsEnabled =
+                Features.IsEnabled = 
+                UserEmoji.IsEnabled = 
+                FeatureEmojis.IsEnabled = 
                 btnStopCamera.IsEnabled =
                 btnAppShot.IsEnabled = 
                 btnExit.IsEnabled = true;
+
+                ToggleFunctionButtons();
 
                 // Instantiate CameraDetector using default camera ID
                 const int cameraId = 0;
@@ -384,6 +386,17 @@ namespace InstantImprovement
         }
 
         /// <summary>
+        /// Toggle Buttons to grant functionality when entering and leaving camera-mode
+        /// </summary>
+        private void ToggleFunctionButtons()
+        {
+            Features.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
+            FacePoints.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
+            FeatureEmojis.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
+            UserEmoji.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
+        }
+
+        /// <summary>
         /// Resets the camera processing.
         /// </summary>
         private void ResetCameraProcessing()
@@ -413,12 +426,13 @@ namespace InstantImprovement
                     Detector = null;
                 }
 
+                ToggleFunctionButtons();
+
                 // Enable/Disable buttons on start
                 btnStartCamera.IsEnabled = true;
                 btnResetCamera.IsEnabled =
-                btnAppShot.IsEnabled = 
+                btnAppShot.IsEnabled =
                 btnStopCamera.IsEnabled = false;
-
             }
             catch (Exception ex)
             {
@@ -435,20 +449,21 @@ namespace InstantImprovement
         private void changeButtonStyle(Button button, bool isOn)
         {
             Style style;
-            String buttonText = String.Empty;
+            // No need to change button-settings
+            //String buttonText = String.Empty;
 
             if (isOn)
             {
                 style = this.FindResource("PointsOnButtonStyle") as Style;
-                buttonText = "Hide " + button.Name;
+                //buttonText = "Hide " + button.Name;
             }
             else
             {
                 style = this.FindResource("CustomButtonStyle") as Style;
-                buttonText = "Show " + button.Name;
+                //buttonText = "Show " + button.Name;
             }
             button.Style = style;
-            button.Content = buttonText;
+            //button.Content = buttonText;
         }
 
         /// <summary>
@@ -510,7 +525,7 @@ namespace InstantImprovement
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
-        private void Metrics_Click(object sender, RoutedEventArgs e)
+        private void Features_Click(object sender, RoutedEventArgs e)
         {
             ShowMetrics = !ShowMetrics;
             canvas.DrawMetrics = ShowMetrics;
@@ -522,7 +537,7 @@ namespace InstantImprovement
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
-        private void Points_Click(object sender, RoutedEventArgs e)
+        private void FacePoints_Click(object sender, RoutedEventArgs e)
         {
             ShowFacePoints = !ShowFacePoints;
             canvas.DrawPoints = ShowFacePoints;
@@ -534,7 +549,7 @@ namespace InstantImprovement
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
-        private void Appearance_Click(object sender, RoutedEventArgs e)
+        private void UserEmoji_Click(object sender, RoutedEventArgs e)
         {
             ShowAppearance = !ShowAppearance;
             canvas.DrawAppearance = ShowAppearance;
@@ -546,7 +561,7 @@ namespace InstantImprovement
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
-        private void Emojis_Click(object sender, RoutedEventArgs e)
+        private void FeatureEmojis_Click(object sender, RoutedEventArgs e)
         {
             ShowEmojis = !ShowEmojis;
             canvas.DrawEmojis = ShowEmojis;

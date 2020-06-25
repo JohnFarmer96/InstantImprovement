@@ -36,38 +36,21 @@
         </Style>
         <Style TargetType="{x:Type ButtonBase}" x:Key="CustomButtonStyle">
             <Setter Property="Foreground" Value="White"/>
-            <Setter Property="Background">
-                <Setter.Value>
-                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                        <GradientStop Color="#FF2778BB" Offset="0.51"/>
-                        <GradientStop Color="#FF2683C5" Offset="0.484"/>
-                        <GradientStop Color="#FF8CD4FF" Offset="1"/>
-                        <GradientStop Color="#FF1973AE" Offset="0.497"/>
-                    </LinearGradientBrush>
-                </Setter.Value>
-            </Setter>
+            <Setter Property="Background" Value="#575757"/>
             <Setter Property="Cursor" Value="Hand"/>
-            <Setter Property="BorderBrush" Value="#FF2B5F91"/>
-            <Setter Property="Margin" Value="1"/>
-            <Setter Property="Height" Value="30"/>
-            <Setter Property="MinWidth" Value="20"/>
-            <Setter Property="FontSize" Value="11"/>
-            
+            <Setter Property="Margin" Value="2"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="MinWidth" Value="120"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontFamily" Value="Helvetica" />
+
             <Setter Property="TextOptions.TextFormattingMode" Value="Display"/>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
                         <Grid>
-                            <Rectangle Stroke="{TemplateBinding BorderBrush}" RadiusX="15" RadiusY="15" Fill="{TemplateBinding Background}"/>
-                            <Rectangle VerticalAlignment="Top" Height="10" Margin="7,2,7,1" RadiusX="10" RadiusY="10">
-                                <Rectangle.Fill>
-                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                                        <GradientStop Color="#11FFFFFF" Offset="1"/>
-                                        <GradientStop Color="#B2FFFFFF" Offset="0"/>
-                                    </LinearGradientBrush>
-                                </Rectangle.Fill>
-                            </Rectangle>
-                            <Rectangle x:Name="rectangle" RadiusX="15" RadiusY="15" Fill="White" Margin="1" Opacity="0"/>
+                            <Rectangle Stroke="{TemplateBinding BorderBrush}" RadiusX="5" RadiusY="5" Fill="{TemplateBinding Background}"/>
+                            <Rectangle x:Name="rectangle" RadiusX="5" RadiusY="5" Fill="White" Margin="1" Opacity="0"/>
                             <ContentPresenter x:Name="contentPresenter" HorizontalAlignment="Center" VerticalAlignment="Center" IsHitTestVisible="False" Margin="{TemplateBinding Padding}"/>
                         </Grid>
                         <ControlTemplate.Triggers>
@@ -90,37 +73,20 @@
 
         <Style TargetType="{x:Type ButtonBase}" x:Key="PointsOnButtonStyle">
             <Setter Property="Foreground" Value="White"/>
-            <Setter Property="Background">
-                <Setter.Value>
-                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                        <GradientStop Color="#FF3CB371" Offset="0.51"/>
-                        <GradientStop Color="#FF3CB371" Offset="0.484"/>
-                        <GradientStop Color="#FF3CB371" Offset="1"/>
-                        <GradientStop Color="#FF1973AE" Offset="0.497"/>
-                    </LinearGradientBrush>
-                </Setter.Value>
-            </Setter>
+            <Setter Property="Background" Value="#AA3131"/>
             <Setter Property="Cursor" Value="Hand"/>
-            <Setter Property="BorderBrush" Value="#FF2B5F91"/>
-            <Setter Property="Margin" Value="1"/>
-            <Setter Property="Height" Value="30"/>
-            <Setter Property="MinWidth" Value="20"/>
-            <Setter Property="FontSize" Value="11"/>
+            <Setter Property="Margin" Value="2"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="MinWidth" Value="120"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontFamily" Value="Helvetica" />
             <Setter Property="TextOptions.TextFormattingMode" Value="Display"/>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
                         <Grid>
-                            <Rectangle Stroke="{TemplateBinding BorderBrush}" RadiusX="15" RadiusY="15" Fill="{TemplateBinding Background}"/>
-                            <Rectangle VerticalAlignment="Top" Height="10" Margin="7,2,7,1" RadiusX="10" RadiusY="10">
-                                <Rectangle.Fill>
-                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                                        <GradientStop Color="#11FFFFFF" Offset="1"/>
-                                        <GradientStop Color="#B2FFFFFF" Offset="0"/>
-                                    </LinearGradientBrush>
-                                </Rectangle.Fill>
-                            </Rectangle>
-                            <Rectangle x:Name="rectangle" RadiusX="15" RadiusY="15" Fill="White" Margin="1" Opacity="0"/>
+                            <Rectangle Stroke="{TemplateBinding BorderBrush}" RadiusX="5" RadiusY="5" Fill="{TemplateBinding Background}"/>
+                            <Rectangle x:Name="rectangle" RadiusX="5" RadiusY="5" Fill="White" Margin="1" Opacity="0"/>
                             <ContentPresenter x:Name="contentPresenter" HorizontalAlignment="Center" VerticalAlignment="Center" IsHitTestVisible="False" Margin="{TemplateBinding Padding}"/>
                         </Grid>
                         <ControlTemplate.Triggers>
@@ -151,7 +117,7 @@
 
             <StackPanel Name="stackPanelImage" Orientation="Vertical" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
 
-                <Grid Name="gridAffdexFaceDisplay" VerticalAlignment="Stretch" Width="1280" Height="720" >
+                <Grid Name="gridAffdexFaceDisplay" VerticalAlignment="Stretch" Width="1280" Height="680" >
                     <Image Name="cameraDisplay" Visibility="Hidden" HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="UniformToFill"/>
 
                     <Image Name="logoBackground" Margin="40,40,40,85" Width="auto" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
@@ -189,18 +155,18 @@
             </DockPanel.Background>
 
             <Grid HorizontalAlignment="Center">
-                <GroupBox Margin="0,5,0,0"  Height="40" VerticalAlignment="Stretch" BorderBrush="Transparent" BorderThickness="0">
+                <GroupBox Margin="0,5,0,0"  Height="60" VerticalAlignment="Stretch" BorderBrush="Transparent" BorderThickness="0">
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-                        <Button Name="btnStartCamera" Style="{StaticResource CustomButtonStyle}" HorizontalAlignment="Center" Margin="0,0,5,0" VerticalAlignment="Top" Width="80" Content="Start" />
-                        <Button Name="btnResetCamera" Style="{StaticResource CustomButtonStyle}" HorizontalAlignment="Center" Margin="0,0,5,0" VerticalAlignment="Top" Width="80" Content="Reset" />
-                        <Button Name="Metrics" Style="{StaticResource CustomButtonStyle}" HorizontalAlignment="Center" Margin="0,0,5,0" VerticalAlignment="Top" Width="80" Content="Show Metrics" />
-                        <Button Name="Points" Style="{StaticResource CustomButtonStyle}" HorizontalAlignment="Center" Margin="0,0,5,0" VerticalAlignment="Top" Width="80" Content="Show Points" />
-                        <Button Name="Emojis" Style="{StaticResource CustomButtonStyle}" HorizontalAlignment="Center" Margin="0,0,5,0" VerticalAlignment="Top" Width="80" Content="Show Emojis" />
-                        <Button Name="Appearance" Style="{StaticResource CustomButtonStyle}" HorizontalAlignment="Center" Margin="0,0,5,0" VerticalAlignment="Top" Width="110" Content="Show Appearance" />
-                        <Button Name="btnAppShot" Style="{StaticResource CustomButtonStyle}" HorizontalAlignment="Center" Margin="0,0,5,0" VerticalAlignment="Top" Width="100" Content="Take Screenshot" />
-                        <Button Name="btnChooseWin" Style="{StaticResource CustomButtonStyle}" HorizontalAlignment="Center" Margin="0,0,5,0" VerticalAlignment="Top" Width="80" Content="Select Metrics" Click="btnChooseWin_Click" />
-                        <Button Name="btnStopCamera" Style="{StaticResource CustomButtonStyle}" HorizontalAlignment="Center" Margin="0,0,5,0" VerticalAlignment="Top" Width="80" Content="Stop" />
-                        <Button Name="btnExit" Style="{StaticResource CustomButtonStyle}" HorizontalAlignment="Center" Margin="0,0,5,0" VerticalAlignment="Bottom" Width="80" Content="Exit" />
+                        <Button Name="btnStartCamera" Style="{StaticResource CustomButtonStyle}" HorizontalAlignment="Center" Margin="0,0,5,0" VerticalAlignment="Center" Width="80" Content="Start" />
+                        <Button Name="btnResetCamera" Style="{StaticResource CustomButtonStyle}" HorizontalAlignment="Center" Margin="0,0,5,0" VerticalAlignment="Center" Width="80" Content="Reset" />
+                        <Button Name="Features" Style="{StaticResource CustomButtonStyle}" HorizontalAlignment="Center" Margin="0,0,5,0" VerticalAlignment="Center" Width="80" Content="Features" />
+                        <Button Name="btnChooseWin" Style="{StaticResource CustomButtonStyle}" HorizontalAlignment="Center" Margin="0,0,5,0" VerticalAlignment="Center" Width="80" Content="Select Features" Click="btnChooseWin_Click" />
+                        <Button Name="FacePoints" Style="{StaticResource CustomButtonStyle}" HorizontalAlignment="Center" Margin="0,0,5,0" VerticalAlignment="Center" Width="80" Content="Face-Points" />
+                        <Button Name="FeatureEmojis" Style="{StaticResource CustomButtonStyle}" HorizontalAlignment="Center" Margin="0,0,5,0" VerticalAlignment="Center" Width="80" Content="Feature-Emojis" />
+                        <Button Name="UserEmoji" Style="{StaticResource CustomButtonStyle}" HorizontalAlignment="Center" Margin="0,0,5,0" VerticalAlignment="Center" Width="110" Content="User-Empoji" />
+                        <Button Name="btnAppShot" Style="{StaticResource CustomButtonStyle}" HorizontalAlignment="Center" Margin="0,0,5,0" VerticalAlignment="Center" Width="100" Content="Screen Capture" />
+                        <Button Name="btnStopCamera" Style="{StaticResource CustomButtonStyle}" HorizontalAlignment="Center" Margin="0,0,5,0" VerticalAlignment="Center" Width="80" Content="Stop Analysis" />
+                        <Button Name="btnExit" Style="{StaticResource CustomButtonStyle}" HorizontalAlignment="Center" Margin="0,0,5,0" VerticalAlignment="Center" Width="80" Content="Exit App" />
                     </StackPanel>
                 </GroupBox>
             </Grid>
