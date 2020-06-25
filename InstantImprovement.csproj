@@ -15,7 +15,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>$(ProjectDir)Resources\AffdexMe_Logo.ico</ApplicationIcon>
+    <ApplicationIcon>favicon.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>x86</PlatformTarget>
@@ -46,6 +46,7 @@
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <Prefer32Bit>true</Prefer32Bit>
+    <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Affdex, Version=3.4.0.550, Culture=neutral, processorArchitecture=AMD64">
@@ -76,15 +77,15 @@
     <Compile Include="MetricSelectionUI.xaml.cs" />
     <Compile Include="NameToResourceConverter.cs" />
     <Compile Include="UpperCaseConverter.cs" />
-    <Page Include="$(ProjectDir)MainWindow.xaml">
+    <Page Include="C:\Projects\ProVIL\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
     <Compile Include="App.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="$(ProjectDir)MainWindow.xaml.cs">
-      <DependentUpon>$(ProjectDir)MainWindow.xaml</DependentUpon>
+    <Compile Include="C:\Projects\ProVIL\MainWindow.xaml.cs">
+      <DependentUpon>C:\Projects\ProVIL\MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Page Include="MetricSelectionUI.xaml">
@@ -209,6 +210,10 @@
       <Link>affdex-native.dll</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Resource Include="favicon.ico" />
+    <Resource Include="Resources\favicon.ico" />
+    <Resource Include="Resources\exponentials_icon.png" />
+    <Resource Include="Resources\exponentials_Logo.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
