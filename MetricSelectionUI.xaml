@@ -38,7 +38,8 @@
                 <Border Background="LightGray" Grid.Row="0" Grid.Column="2"  Margin="0,0,0,2" />
                 <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="0" Margin="1,1,1,0">
                     <Border BorderThickness="5" BorderBrush="White" Background="Transparent" CornerRadius="0" HorizontalAlignment="Left" VerticalAlignment="Top">
-                        <StackPanel Name="Anger" MouseEnter="StackPanel_MouseEnter" MouseLeave="StackPanel_MouseLeave" MouseDown="StackPanel_MouseDown" MouseUp="StackPanel_MouseLeave">
+                        <StackPanel Name="Anger" MouseDown="StackPanel_MouseDown">
+                            <!--MouseEnter="StackPanel_MouseEnter" MouseLeave="StackPanel_MouseLeave" MouseUp="StackPanel_MouseLeave"-->
                             <TextBlock Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=StackPanel}, Path=Name, Converter={StaticResource StringToUpper} }" Foreground="White" FontFamily="Helvetica" FontSize="12" HorizontalAlignment="Center"/>
                             <Image Source="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=StackPanel}, Path=Name, Converter={StaticResource ResourceFileName}, ConverterParameter=jpg }"  />
                         </StackPanel>
@@ -46,7 +47,8 @@
                 </StackPanel>
                 <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="1" Margin="0,0,1,0">
                     <Border BorderThickness="5" BorderBrush="White" Background="Transparent" CornerRadius="0" HorizontalAlignment="Left" VerticalAlignment="Top">
-                        <StackPanel Name="Disgust" MouseEnter="StackPanel_MouseEnter" MouseLeave="StackPanel_MouseLeave" MouseDown="StackPanel_MouseDown" MouseUp="StackPanel_MouseLeave">
+                        <StackPanel Name="Disgust" MouseDown="StackPanel_MouseDown" >
+                            <!--MouseEnter="StackPanel_MouseEnter" MouseLeave="StackPanel_MouseLeave" MouseDown="StackPanel_MouseDown" MouseUp="StackPanel_MouseLeave">-->
                             <TextBlock Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=StackPanel}, Path=Name, Converter={StaticResource StringToUpper} }" Foreground="White" FontFamily="Helvetica" FontSize="12" HorizontalAlignment="Center"/>
                             <Image Source="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=StackPanel}, Path=Name, Converter={StaticResource ResourceFileName}, ConverterParameter=jpg  }" />
                         </StackPanel>
@@ -54,15 +56,17 @@
                 </StackPanel>
                 <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="2" Margin="0,0,1,0">
                         <Border BorderThickness="5" BorderBrush="White" Background="Transparent" CornerRadius="0" HorizontalAlignment="Left" VerticalAlignment="Top">
-                            <StackPanel Name="Fear" MouseEnter="StackPanel_MouseEnter" MouseLeave="StackPanel_MouseLeave" MouseDown="StackPanel_MouseDown" MouseUp="StackPanel_MouseLeave">
-                                <TextBlock Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=StackPanel}, Path=Name, Converter={StaticResource StringToUpper} }" Foreground="White" FontFamily="Helvetica" FontSize="12" HorizontalAlignment="Center"/>
+                        <StackPanel Name="Fear" MouseDown="StackPanel_MouseDown" >
+                            <!--MouseEnter="StackPanel_MouseEnter" MouseLeave="StackPanel_MouseLeave" MouseDown="StackPanel_MouseDown" MouseUp="StackPanel_MouseLeave">-->
+                            <TextBlock Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=StackPanel}, Path=Name, Converter={StaticResource StringToUpper} }" Foreground="White" FontFamily="Helvetica" FontSize="12" HorizontalAlignment="Center"/>
                                 <Image Source="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=StackPanel}, Path=Name, Converter={StaticResource ResourceFileName}, ConverterParameter=jpg  }" />
                             </StackPanel>
                         </Border>
                 </StackPanel>
                 <StackPanel Orientation="Vertical" Grid.Row="2" Grid.Column="0" Margin="1,1,1,0">
                     <Border BorderThickness="5" BorderBrush="White" Background="Transparent" CornerRadius="0" HorizontalAlignment="Left" VerticalAlignment="Top">
-                        <StackPanel Name="Joy" MouseEnter="StackPanel_MouseEnter" MouseLeave="StackPanel_MouseLeave" MouseDown="StackPanel_MouseDown" MouseUp="StackPanel_MouseLeave">
+                        <StackPanel Name="Joy" MouseDown="StackPanel_MouseDown" >
+                            <!--MouseEnter="StackPanel_MouseEnter" MouseLeave="StackPanel_MouseLeave" MouseDown="StackPanel_MouseDown" MouseUp="StackPanel_MouseLeave">-->
                             <TextBlock Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=StackPanel}, Path=Name, Converter={StaticResource StringToUpper} }" Foreground="White" FontFamily="Helvetica" FontSize="12" HorizontalAlignment="Center"/>
                             <Image Source="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=StackPanel}, Path=Name, Converter={StaticResource ResourceFileName}, ConverterParameter=jpg  }"  />
                         </StackPanel>
@@ -70,7 +74,7 @@
                 </StackPanel>
                 <StackPanel Orientation="Vertical" Grid.Row="2" Grid.Column="1" Margin="0,0,1,0">
                     <Border BorderThickness="5" BorderBrush="White" Background="Transparent" CornerRadius="0" HorizontalAlignment="Left" VerticalAlignment="Top">
-                        <StackPanel Name="Sadness" MouseEnter="StackPanel_MouseEnter" MouseLeave="StackPanel_MouseLeave" MouseDown="StackPanel_MouseDown" MouseUp="StackPanel_MouseLeave">
+                        <StackPanel Name="Sadness" MouseDown="StackPanel_MouseDown" >
                             <TextBlock Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=StackPanel}, Path=Name, Converter={StaticResource StringToUpper} }" Foreground="White" FontFamily="Helvetica" FontSize="12" HorizontalAlignment="Center"/>
                             <Image Source="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=StackPanel}, Path=Name, Converter={StaticResource ResourceFileName}, ConverterParameter=jpg  }"  />
                         </StackPanel>
@@ -78,7 +82,7 @@
                 </StackPanel>
                 <StackPanel Orientation="Vertical" Grid.Row="2" Grid.Column="2" Margin="0,0,1,0">
                     <Border BorderThickness="5" BorderBrush="White" Background="Transparent" CornerRadius="0" HorizontalAlignment="Left" VerticalAlignment="Top">
-                        <StackPanel Name="Surprise" MouseEnter="StackPanel_MouseEnter" MouseLeave="StackPanel_MouseLeave" MouseDown="StackPanel_MouseDown" MouseUp="StackPanel_MouseLeave">
+                        <StackPanel Name="Surprise" MouseDown="StackPanel_MouseDown" >
                             <TextBlock Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=StackPanel}, Path=Name, Converter={StaticResource StringToUpper} }" Foreground="White" FontFamily="Helvetica" FontSize="12" HorizontalAlignment="Center"/>
                             <Image Source="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=StackPanel}, Path=Name, Converter={StaticResource ResourceFileName}, ConverterParameter=jpg  }"  />
                         </StackPanel>
@@ -86,7 +90,7 @@
                 </StackPanel>
                 <StackPanel Orientation="Vertical" Grid.Row="3" Grid.Column="0" Margin="1,0,1,0">
                     <Border BorderThickness="5" BorderBrush="White" Background="Transparent" CornerRadius="0" HorizontalAlignment="Left" VerticalAlignment="Top">
-                        <StackPanel Name="Contempt" MouseEnter="StackPanel_MouseEnter" MouseLeave="StackPanel_MouseLeave" MouseDown="StackPanel_MouseDown" MouseUp="StackPanel_MouseLeave">
+                        <StackPanel Name="Contempt" MouseDown="StackPanel_MouseDown" >
                             <TextBlock Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=StackPanel}, Path=Name, Converter={StaticResource StringToUpper} }" Foreground="White" FontFamily="Helvetica" FontSize="12" HorizontalAlignment="Center"/>
                             <Image Source="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=StackPanel}, Path=Name, Converter={StaticResource ResourceFileName}, ConverterParameter=jpg  }"  />
                         </StackPanel>
@@ -94,7 +98,7 @@
                 </StackPanel>
                 <StackPanel Orientation="Vertical" Grid.Row="3" Grid.Column="1" Margin="0,0,1,0">
                     <Border BorderThickness="5" BorderBrush="White" Background="Transparent" CornerRadius="0" HorizontalAlignment="Left" VerticalAlignment="Top">
-                        <StackPanel Name="Valence" MouseEnter="StackPanel_MouseEnter" MouseLeave="StackPanel_MouseLeave" MouseDown="StackPanel_MouseDown" MouseUp="StackPanel_MouseLeave">
+                        <StackPanel Name="Valence" MouseDown="StackPanel_MouseDown" >
                             <TextBlock Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=StackPanel}, Path=Name, Converter={StaticResource StringToUpper} }" Foreground="White" FontFamily="Helvetica" FontSize="12" HorizontalAlignment="Center"/>
                             <Image Source="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=StackPanel}, Path=Name, Converter={StaticResource ResourceFileName}, ConverterParameter=jpg  }"  />
                         </StackPanel>
@@ -102,7 +106,7 @@
                 </StackPanel>
                 <StackPanel Orientation="Vertical" Grid.Row="3" Grid.Column="2" Margin="0,0,1,0">
                     <Border BorderThickness="5" BorderBrush="White" Background="Transparent" CornerRadius="0" HorizontalAlignment="Left" VerticalAlignment="Top">
-                        <StackPanel Name="Engagement" MouseEnter="StackPanel_MouseEnter" MouseLeave="StackPanel_MouseLeave" MouseDown="StackPanel_MouseDown" MouseUp="StackPanel_MouseLeave">
+                        <StackPanel Name="Engagement" MouseDown="StackPanel_MouseDown" >
                             <TextBlock Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=StackPanel}, Path=Name, Converter={StaticResource StringToUpper} }" Foreground="White" FontFamily="Helvetica" FontSize="12" HorizontalAlignment="Center"/>
                             <Image Source="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=StackPanel}, Path=Name, Converter={StaticResource ResourceFileName}, ConverterParameter=jpg  }"  />
                         </StackPanel>
@@ -117,7 +121,7 @@
                 <Border Background="LightGray" Grid.Row="4" Grid.Column="2"  Margin="0,2,0,2"/>
                 <StackPanel Orientation="Vertical" Grid.Row="5" Grid.Column="0" Margin="1,0,1,0">
                     <Border BorderThickness="5" BorderBrush="White" Background="Transparent" CornerRadius="0" HorizontalAlignment="Left" VerticalAlignment="Top">
-                        <StackPanel Name="Attention" MouseEnter="StackPanel_MouseEnter" MouseLeave="StackPanel_MouseLeave" MouseDown="StackPanel_MouseDown" MouseUp="StackPanel_MouseLeave">
+                        <StackPanel Name="Attention" MouseDown="StackPanel_MouseDown" >
                             <TextBlock Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=StackPanel}, Path=Name, Converter={StaticResource StringToUpper} }" Foreground="White" FontFamily="Helvetica" FontSize="12" HorizontalAlignment="Center"/>
                             <Image Source="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=StackPanel}, Path=Name, Converter={StaticResource ResourceFileName}, ConverterParameter=jpg  }"  />
                         </StackPanel>
@@ -125,7 +129,7 @@
                 </StackPanel>
                 <StackPanel Orientation="Vertical" Grid.Row="5" Grid.Column="1" Margin="0,0,1,0">
                     <Border BorderThickness="5" BorderBrush="White" Background="Transparent" CornerRadius="0" HorizontalAlignment="Left" VerticalAlignment="Top">
-                        <StackPanel Name="BrowFurrow" MouseEnter="StackPanel_MouseEnter" MouseLeave="StackPanel_MouseLeave" MouseDown="StackPanel_MouseDown" MouseUp="StackPanel_MouseLeave">
+                        <StackPanel Name="BrowFurrow" MouseDown="StackPanel_MouseDown" >
                             <TextBlock Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=StackPanel}, Path=Name, Converter={StaticResource StringToUpper} }" Foreground="White" FontFamily="Helvetica" FontSize="12" HorizontalAlignment="Center"/>
                             <Image Source="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=StackPanel}, Path=Name, Converter={StaticResource ResourceFileName}, ConverterParameter=jpg  }"  />
                         </StackPanel>
@@ -133,63 +137,63 @@
                 </StackPanel>
                 <StackPanel Orientation="Vertical" Grid.Row="5" Grid.Column="2" Margin="0,0,1,0">
                     <Border BorderThickness="5" BorderBrush="White" Background="Transparent" CornerRadius="0" HorizontalAlignment="Left" VerticalAlignment="Top">
-                        <StackPanel Name="BrowRaise" MouseEnter="StackPanel_MouseEnter" MouseLeave="StackPanel_MouseLeave" MouseDown="StackPanel_MouseDown" MouseUp="StackPanel_MouseLeave">
+                        <StackPanel Name="BrowRaise" MouseDown="StackPanel_MouseDown" >
                             <TextBlock Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=StackPanel}, Path=Name, Converter={StaticResource StringToUpper} }" Foreground="White" FontFamily="Helvetica" FontSize="12" HorizontalAlignment="Center"/>
                             <Image Source="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=StackPanel}, Path=Name, Converter={StaticResource ResourceFileName}, ConverterParameter=jpg  }"  />
                         </StackPanel>
                     </Border>
                 </StackPanel>
-                <StackPanel Orientation="Vertical" Grid.Row="6" Grid.Column="1" Margin="0,0,1,0">
+                <StackPanel Orientation="Vertical" Grid.Row="6" Grid.Column="0" Margin="0,0,1,0">
                     <Border BorderThickness="5" BorderBrush="White" Background="Transparent" CornerRadius="0" HorizontalAlignment="Left" VerticalAlignment="Top">
-                        <StackPanel Name="EyeClosure" MouseEnter="StackPanel_MouseEnter" MouseLeave="StackPanel_MouseLeave" MouseDown="StackPanel_MouseDown" MouseUp="StackPanel_MouseLeave">
+                        <StackPanel Name="EyeClosure" MouseDown="StackPanel_MouseDown" >
                             <TextBlock Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=StackPanel}, Path=Name, Converter={StaticResource StringToUpper} }" Foreground="White" FontFamily="Helvetica" FontSize="12" HorizontalAlignment="Center"/>
                             <Image Source="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=StackPanel}, Path=Name, Converter={StaticResource ResourceFileName}, ConverterParameter=jpg  }"  />
                         </StackPanel>
                     </Border> 
                 </StackPanel>
-                <StackPanel Orientation="Vertical" Grid.Row="6" Grid.Column="2" Margin="0,0,1,0">
+                <!--<StackPanel Orientation="Vertical" Grid.Row="6" Grid.Column="1" Margin="0,0,1,0">
                     <Border BorderThickness="5" BorderBrush="White" Background="Transparent" CornerRadius="0" HorizontalAlignment="Left" VerticalAlignment="Top">
-                        <StackPanel Name="InnerBrowRaise" MouseEnter="StackPanel_MouseEnter" MouseLeave="StackPanel_MouseLeave" MouseDown="StackPanel_MouseDown" MouseUp="StackPanel_MouseLeave">
+                        <StackPanel Name="InnerBrowRaise" MouseDown="StackPanel_MouseDown" >
                             <TextBlock Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=StackPanel}, Path=Name, Converter={StaticResource StringToUpper} }" Foreground="White" FontFamily="Helvetica" FontSize="12" HorizontalAlignment="Center"/>
                             <Image Source="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=StackPanel}, Path=Name, Converter={StaticResource ResourceFileName}, ConverterParameter=jpg  }"  />
                         </StackPanel>
                     </Border> 
-                </StackPanel>
-                <StackPanel Orientation="Vertical" Grid.Row="7" Grid.Column="0" Margin="1,0,1,0">
+                </StackPanel>-->
+                <StackPanel Orientation="Vertical" Grid.Row="6" Grid.Column="1" Margin="1,0,1,0">
                     <Border BorderThickness="5" BorderBrush="White" Background="Transparent" CornerRadius="0" HorizontalAlignment="Left" VerticalAlignment="Top">
-                        <StackPanel Name="Frown" MouseEnter="StackPanel_MouseEnter" MouseLeave="StackPanel_MouseLeave" MouseDown="StackPanel_MouseDown" MouseUp="StackPanel_MouseLeave">
+                        <StackPanel Name="Frown" MouseDown="StackPanel_MouseDown" >
                             <TextBlock Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=StackPanel}, Path=Name, Converter={StaticResource StringToUpper} }" Foreground="White" FontFamily="Helvetica" FontSize="12" HorizontalAlignment="Center"/>
                             <Image Source="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=StackPanel}, Path=Name, Converter={StaticResource ResourceFileName}, ConverterParameter=jpg  }"  />
                         </StackPanel>
                     </Border>
                 </StackPanel>
-                <StackPanel Orientation="Vertical" Grid.Row="8" Grid.Column="0" Margin="1,0,1,0">
+                <StackPanel Orientation="Vertical" Grid.Row="6" Grid.Column="2" Margin="1,0,1,0">
                     <Border BorderThickness="5" BorderBrush="White" Background="Transparent" CornerRadius="0" HorizontalAlignment="Left" VerticalAlignment="Top">
-                        <StackPanel Name="LipSuck" MouseEnter="StackPanel_MouseEnter" MouseLeave="StackPanel_MouseLeave" MouseDown="StackPanel_MouseDown" MouseUp="StackPanel_MouseLeave">
+                        <StackPanel Name="LipSuck" MouseDown="StackPanel_MouseDown" >
                             <TextBlock Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=StackPanel}, Path=Name, Converter={StaticResource StringToUpper} }" Foreground="White" FontFamily="Helvetica" FontSize="12" HorizontalAlignment="Center"/>
                             <Image Source="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=StackPanel}, Path=Name, Converter={StaticResource ResourceFileName}, ConverterParameter=jpg  }"  />
                         </StackPanel>
                     </Border> 
                 </StackPanel>
-                <StackPanel Orientation="Vertical" Grid.Row="8" Grid.Column="1" Margin="0,0,1,0">
+                <StackPanel Orientation="Vertical" Grid.Row="7" Grid.Column="0" Margin="0,0,1,0">
                     <Border BorderThickness="5" BorderBrush="White" Background="Transparent" CornerRadius="0" HorizontalAlignment="Left" VerticalAlignment="Top">
-                        <StackPanel Name="MouthOpen" MouseEnter="StackPanel_MouseEnter" MouseLeave="StackPanel_MouseLeave" MouseDown="StackPanel_MouseDown" MouseUp="StackPanel_MouseLeave">
+                        <StackPanel Name="MouthOpen" MouseDown="StackPanel_MouseDown" >
                             <TextBlock Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=StackPanel}, Path=Name, Converter={StaticResource StringToUpper} }" Foreground="White" FontFamily="Helvetica" FontSize="12" HorizontalAlignment="Center"/>
                             <Image Source="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=StackPanel}, Path=Name, Converter={StaticResource ResourceFileName}, ConverterParameter=jpg  }"  />
                         </StackPanel>
                     </Border>
                 </StackPanel>
-                <StackPanel Orientation="Vertical" Grid.Row="9" Grid.Column="0" Margin="1,0,1,0">
+                <StackPanel Orientation="Vertical" Grid.Row="7" Grid.Column="1" Margin="1,0,1,0">
                     <Border BorderThickness="5" BorderBrush="White" Background="Transparent" CornerRadius="0" HorizontalAlignment="Left" VerticalAlignment="Top">
-                        <StackPanel Name="Smile" MouseEnter="StackPanel_MouseEnter" MouseLeave="StackPanel_MouseLeave" MouseDown="StackPanel_MouseDown" MouseUp="StackPanel_MouseLeave">
+                        <StackPanel Name="Smile" MouseDown="StackPanel_MouseDown" >
                             <TextBlock Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=StackPanel}, Path=Name, Converter={StaticResource StringToUpper} }" Foreground="White" FontFamily="Helvetica" FontSize="12" HorizontalAlignment="Center"/>
                             <Image Source="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=StackPanel}, Path=Name, Converter={StaticResource ResourceFileName}, ConverterParameter=jpg  }"  />
                         </StackPanel>
                     </Border> 
                 </StackPanel>
-                <StackPanel Orientation="Vertical" Grid.Row="9" Grid.Column="1" Margin="0,0,1,0">
+                <StackPanel Orientation="Vertical" Grid.Row="7" Grid.Column="2" Margin="0,0,1,0">
                     <Border BorderThickness="5" BorderBrush="White" Background="Transparent" CornerRadius="0" HorizontalAlignment="Left" VerticalAlignment="Top">
-                        <StackPanel Name="Smirk" MouseEnter="StackPanel_MouseEnter" MouseLeave="StackPanel_MouseLeave" MouseDown="StackPanel_MouseDown" MouseUp="StackPanel_MouseLeave">
+                        <StackPanel Name="Smirk" MouseDown="StackPanel_MouseDown" >
                             <TextBlock Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=StackPanel}, Path=Name, Converter={StaticResource StringToUpper} }" Foreground="White" FontFamily="Helvetica" FontSize="12" HorizontalAlignment="Center"/>
                             <Image Source="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=StackPanel}, Path=Name, Converter={StaticResource ResourceFileName}, ConverterParameter=jpg  }"  />
                         </StackPanel>

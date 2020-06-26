@@ -14,7 +14,6 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using WpfAnimatedGif;
 
 namespace InstantImprovement
 {
@@ -51,59 +50,59 @@ namespace InstantImprovement
             this.Top = (screenHeight / 2) - (windowHeight / 2);
         }
 
-        private void StackPanel_MouseEnter(object sender, MouseEventArgs e)
-        {
-            Border border = (Border)((StackPanel)sender).Parent;
-            if (!isStackPanelSelected(border)) 
-                border.BorderBrush = Brushes.Coral;
-            var image = ((StackPanel)sender).Children.OfType<Image>().FirstOrDefault();
-            NameToResourceConverter conv = new NameToResourceConverter();
-            var gifUri = conv.Convert(((StackPanel)sender).Name, null, "gif", null);
+        //private void StackPanel_MouseEnter(object sender, MouseEventArgs e)
+        //{
+        //    Border border = (Border)((StackPanel)sender).Parent;
+        //    if (!isStackPanelSelected(border)) 
+        //        border.BorderBrush = Brushes.Coral;
+        //    var image = ((StackPanel)sender).Children.OfType<Image>().FirstOrDefault();
+        //    NameToResourceConverter conv = new NameToResourceConverter();
+        //    var gifUri = conv.Convert(((StackPanel)sender).Name, null, "gif", null);
 
-            var img = new BitmapImage();
-            img.BeginInit();
-            img.UriSource = (Uri) gifUri;
-            img.EndInit();
-            ImageBehavior.SetAnimatedSource(image, img);
-            playGif(image);
-        }
+        //    var img = new BitmapImage();
+        //    img.BeginInit();
+        //    img.UriSource = (Uri) gifUri;
+        //    img.EndInit();
+        //    ImageBehavior.SetAnimatedSource(image, img);
+        //    playGif(image);
+        //}
 
-        private void StackPanel_MouseLeave(object sender, MouseEventArgs e)
-        {
-            Border border = (Border)((StackPanel)sender).Parent;
-            var image = ((StackPanel)sender).Children.OfType<Image>().FirstOrDefault();
-            NameToResourceConverter conv = new NameToResourceConverter();
-            stopGif(image);
-            var img = new BitmapImage();
-            img.BeginInit();
-            img.UriSource = (Uri)conv.Convert(((StackPanel)sender).Name, null, "jpg", null);
-            img.EndInit();
-            ImageBehavior.SetAnimatedSource(image, img);
+        //private void StackPanel_MouseLeave(object sender, MouseEventArgs e)
+        //{
+        //    Border border = (Border)((StackPanel)sender).Parent;
+        //    var image = ((StackPanel)sender).Children.OfType<Image>().FirstOrDefault();
+        //    NameToResourceConverter conv = new NameToResourceConverter();
+        //    stopGif(image);
+        //    var img = new BitmapImage();
+        //    img.BeginInit();
+        //    img.UriSource = (Uri)conv.Convert(((StackPanel)sender).Name, null, "jpg", null);
+        //    img.EndInit();
+        //    ImageBehavior.SetAnimatedSource(image, img);
 
-            if (!isStackPanelSelected(border)) 
-                border.BorderBrush = Brushes.White;
+        //    if (!isStackPanelSelected(border)) 
+        //        border.BorderBrush = Brushes.White;
 
-            int classifersCount = Classifiers.Count;
-            if (classifersCount == 6) txtBlkInfo.Text = String.Format(DONEMSG, classifersCount);
-            else txtBlkInfo.Text = String.Format(ACTIVEMSG, classifersCount, 6 - classifersCount);
-        }
+        //    int classifersCount = Classifiers.Count;
+        //    if (classifersCount == 6) txtBlkInfo.Text = String.Format(DONEMSG, classifersCount);
+        //    else txtBlkInfo.Text = String.Format(ACTIVEMSG, classifersCount, 6 - classifersCount);
+        //}
 
-        private void stopGif(Image image)
-        {
-            var control = ImageBehavior.GetAnimationController(image);
-            if (control != null)
-            {
-                control.Pause();
-                control.GotoFrame(control.FrameCount - 1);
-            }
-        }
+        //private void stopGif(Image image)
+        //{
+        //    var control = ImageBehavior.GetAnimationController(image);
+        //    if (control != null)
+        //    {
+        //        control.Pause();
+        //        control.GotoFrame(control.FrameCount - 1);
+        //    }
+        //}
 
-        private void playGif(Image image)
-        {
-            var control = ImageBehavior.GetAnimationController(image);
-            control.GotoFrame(0);
-            control.Play();
-        }
+        //private void playGif(Image image)
+        //{
+        //    var control = ImageBehavior.GetAnimationController(image);
+        //    control.GotoFrame(0);
+        //    control.Play();
+        //}
 
         private void StackPanel_MouseDown(object sender, MouseButtonEventArgs e)
         {
