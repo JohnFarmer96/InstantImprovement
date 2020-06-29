@@ -9,6 +9,7 @@ using System.Reflection;
 using System.Windows.Shapes;
 using System.IO;
 using System.Windows.Controls.Primitives;
+using Affdex;
 
 namespace InstantImprovement
 {
@@ -35,6 +36,7 @@ namespace InstantImprovement
 
             // Show the logo
             logoBackground.Visibility = Visibility.Visible;
+            affdexLabel.Visibility = Visibility.Visible;
             cornerLogo.Visibility = Visibility.Hidden;
 
             EnabledClassifiers = InstantImprovement.Settings.Default.Classifiers;
@@ -282,6 +284,7 @@ namespace InstantImprovement
 
                 // Show the logo
                 logoBackground.Visibility = Visibility.Visible;
+                affdexLabel.Visibility = Visibility.Visible;
 
                 FacePoints.IsEnabled =
                 Features.IsEnabled =
@@ -345,7 +348,7 @@ namespace InstantImprovement
 
                 Detector.setImageListener(this);
                 Detector.setProcessStatusListener(this);
-
+                
                 // Set the License Path
                 // Detector.setLicenseString(FilePath.GetAffdexLicense());
 
@@ -353,6 +356,7 @@ namespace InstantImprovement
 
                 // Hide the logo, show the camera feed and the data canvas
                 logoBackground.Visibility = Visibility.Hidden;
+                affdexLabel.Visibility = Visibility.Hidden;
                 cornerLogo.Visibility = Visibility.Visible;
                 canvas.Visibility = Visibility.Visible;
                 cameraDisplay.Visibility = Visibility.Visible;
@@ -654,6 +658,16 @@ namespace InstantImprovement
         /// Affdex Detector
         /// </summary>
         private Affdex.Detector Detector { get; set; }
+
+        /// <summary>
+        /// Affdex Emotions
+        /// </summary>
+        private Affdex.Emotions Emotions { get; set; }
+
+        /// <summary>
+        /// Affdex Expressions
+        /// </summary>
+        private Affdex.Expressions Expressions { get; set; }
 
         /// <summary>
         /// Collection of strings represent the name of the active selected metrics;

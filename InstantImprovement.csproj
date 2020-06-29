@@ -48,6 +48,15 @@
     <Prefer32Bit>true</Prefer32Bit>
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <OutputPath>bin\Debug\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <OutputPath>bin\x86\Debug\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <OutputPath>bin\x64\Debug\</OutputPath>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Affdex, Version=3.4.0.550, Culture=neutral, processorArchitecture=AMD64">
       <SpecificVersion>False</SpecificVersion>

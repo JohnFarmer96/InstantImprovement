@@ -182,9 +182,9 @@ namespace InstantImprovement
 
         private void btnClearAll_Click(object sender, RoutedEventArgs e)
         {
-            foreach (String classifier in Classifiers)
+            foreach (StackPanel panel in theGrid.Children.OfType<StackPanel>())
             {
-                Border border = getBorder(classifier);
+                Border border = panel.Children.OfType<Border>().FirstOrDefault();
                 border.BorderBrush = Brushes.White;
                 txtBlkInfo.Text = SELECTMSG;
             }

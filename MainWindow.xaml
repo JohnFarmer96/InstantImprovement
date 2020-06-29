@@ -125,6 +125,7 @@
 
                     <InstantImprovement:DrawingCanvas x:Name="canvas" HorizontalAlignment="Center" VerticalAlignment="Center" />
                     <Label Name="appShotLocLabel" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{StaticResource appShotLocLabelStyle}" />
+                    <Label Name="affdexLabel" Content="This Application was built with Affdex SDK" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,0,60" FontSize="50" FontFamily="Helvetica" FontWeight="ExtraLight" Foreground="#575757"/>
                 </Grid>
             </StackPanel>
 

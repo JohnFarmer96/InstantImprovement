@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:InstantImprovement="clr-namespace:InstantImprovement"
         Title="Instant Improvement: Select Features (Emotions and Expressions)" 
-        Height="640" Width="514" ResizeMode="NoResize" Closing="Window_Closing">
+        Height="640" Width="567" ResizeMode="NoResize" Closing="Window_Closing">
     <Grid>
         <ScrollViewer Margin="0,0,0,45">
             <Grid Name="theGrid" Background="Black">
@@ -12,30 +12,32 @@
                     <InstantImprovement:NameToResourceConverter x:Key="ResourceFileName" />
                 </Grid.Resources>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="160" />
-                    <ColumnDefinition Width="160" />
-                    <ColumnDefinition Width="160" />
+                    <ColumnDefinition Width="180" />
+                    <ColumnDefinition Width="180" />
+                    <ColumnDefinition Width="180" />
                 </Grid.ColumnDefinitions>
 
                 <Grid.RowDefinitions>
                     <RowDefinition Height="40" />
-                    <RowDefinition Height="178" />
-                    <RowDefinition Height="178" />
-                    <RowDefinition Height="178" />
+                    <RowDefinition Height="180" />
+                    <RowDefinition Height="180" />
+                    <RowDefinition Height="180" />
                     <RowDefinition Height="50" />
-                    <RowDefinition Height="178" />
-                    <RowDefinition Height="178" />
-                    <RowDefinition Height="178" />
-                    <RowDefinition Height="178" />
-                    <RowDefinition Height="178" />
+                    <RowDefinition Height="180" />
+                    <RowDefinition Height="180" />
+                    <RowDefinition Height="180" />
+                    <RowDefinition Height="30" />
                 </Grid.RowDefinitions>
-                <Border Background="LightGray" Grid.Row="0" Grid.Column="0" Margin="1,0,0,2">
+                <Border Background="LightGray" Grid.Row="0" Grid.ColumnSpan="3" Margin="1,0,0,2">
                     <StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="0" Margin="10,10,0,10">
                         <TextBlock Text="Emotions" FontFamily="Helvetica" Foreground="Black" FontWeight="Bold" FontSize="12" HorizontalAlignment="Left"/>
                     </StackPanel>
                 </Border>
-                <Border Background="LightGray" Grid.Row="0" Grid.Column="1" Margin="0,0,0,2" />
-                <Border Background="LightGray" Grid.Row="0" Grid.Column="2"  Margin="0,0,0,2" />
+                <Border Background="LightGray" Grid.Row="0" Grid.Column="0"  Grid.ColumnSpan="3" Margin="70,0,0,2">
+                    <StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="0" Margin="10,10,0,10">
+                        <TextBlock Text="Illustrations powered by freepik.com" FontFamily="Helvetica" Foreground="Gray" FontSize="12" HorizontalAlignment="Left"/>
+                    </StackPanel>
+                </Border>
                 <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="0" Margin="1,1,1,0">
                     <Border BorderThickness="5" BorderBrush="White" Background="Transparent" CornerRadius="0" HorizontalAlignment="Left" VerticalAlignment="Top">
                         <StackPanel Name="Anger" MouseDown="StackPanel_MouseDown">
@@ -86,7 +88,7 @@
                             <TextBlock Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=StackPanel}, Path=Name, Converter={StaticResource StringToUpper} }" Foreground="White" FontFamily="Helvetica" FontSize="12" HorizontalAlignment="Center"/>
                             <Image Source="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=StackPanel}, Path=Name, Converter={StaticResource ResourceFileName}, ConverterParameter=jpg  }"  />
                         </StackPanel>
-                    </Border> 
+                    </Border>
                 </StackPanel>
                 <StackPanel Orientation="Vertical" Grid.Row="3" Grid.Column="0" Margin="1,0,1,0">
                     <Border BorderThickness="5" BorderBrush="White" Background="Transparent" CornerRadius="0" HorizontalAlignment="Left" VerticalAlignment="Top">
