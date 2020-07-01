@@ -66,6 +66,7 @@ namespace InstantImprovement
             btnResetCamera.Click += btnResetCamera_Click;
             btnExit.Click += btnExit_Click;
             btnAppShot.Click += btnAppShot_Click;
+            btnLaunchVideo.Click += btnLaunchVideo_Click;
 
             ShowEmojis = canvas.DrawEmojis = InstantImprovement.Settings.Default.ShowEmojis;
             ShowAppearance = canvas.DrawAppearance = InstantImprovement.Settings.Default.ShowAppearance;
@@ -605,6 +606,12 @@ namespace InstantImprovement
         {
             SaveSettings();
             Application.Current.Shutdown();
+        }
+
+        private void btnLaunchVideo_Click(object sender, RoutedEventArgs e)
+        {
+            VideoWindow vidWin = new VideoWindow();
+            vidWin.ShowDialog();
         }
 
         /// <summary>

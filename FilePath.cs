@@ -12,7 +12,8 @@ namespace InstantImprovement
     {
         static public String GetClassifierDataFolder()
         {
-            return "C:\\Program Files (x86)\\Affectiva\\Affdex SDK\\data";
+            string appDir = AppDomain.CurrentDomain.BaseDirectory;
+            return appDir + "\\data";
         }
 
         static public String GetAffdexLicense()

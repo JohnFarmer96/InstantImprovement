@@ -113,11 +113,11 @@
     <Grid Name="gridMainDisplay" Margin="0,0,0,0" >
 
         <Grid Name="gridContentDisplay" DockPanel.Dock="Top">
-
-
+            
             <StackPanel Name="stackPanelImage" Orientation="Vertical" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
 
                 <Grid Name="gridAffdexFaceDisplay" VerticalAlignment="Stretch" Width="1280" Height="680" >
+                    <Button Name="btnLaunchVideo" Style="{StaticResource CustomButtonStyle}" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,80, 0, 0" Content="Launch Video" />
                     <Image Name="cameraDisplay" Visibility="Hidden" HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="UniformToFill"/>
 
                     <Image Name="logoBackground" Margin="40,40,40,85" Width="auto" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
