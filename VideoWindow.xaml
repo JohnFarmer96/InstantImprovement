@@ -93,11 +93,19 @@
     <Grid Name="gridMainDisplay" Margin="0,0,0,0" >
 
         <Grid Name="gridContentDisplay" DockPanel.Dock="Top">
-            <!--<MediaElement Name="VideoControl" Source="" Margin="10, 10, 10, 190"></MediaElement>-->
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100*" />
+            </Grid.ColumnDefinitions>
 
-            <lvc:CartesianChart Series="{Binding SeriesCollection}" LegendLocation="Right" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="70*" />
+                <RowDefinition Height="30*" />
+            </Grid.RowDefinitions>
+            <MediaElement Name="VideoControl" LoadedBehavior="Manual" Grid.Column="0" Grid.Row="0" Margin="10"></MediaElement>
+
+            <lvc:CartesianChart Name="EmotionTimeline" Grid.Column="0" Grid.Row="1" LegendLocation="Right" Margin="10">
                 <lvc:CartesianChart.AxisY>
-                    <lvc:Axis Title="Rate"></lvc:Axis>
+                    <lvc:Axis Title="Rate" MaxValue="100" MinValue="0" MinRange="100"></lvc:Axis>
                 </lvc:CartesianChart.AxisY>
                 <lvc:CartesianChart.AxisX>
                     <lvc:Axis Title="Time"></lvc:Axis>

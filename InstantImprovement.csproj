@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{5B893EA1-EB11-425A-BF8A-05822F5E2C9A}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>InstantImprovement</RootNamespace>
     <AssemblyName>InstantImprovement</AssemblyName>
@@ -91,6 +91,7 @@
     <Compile Include="FilePath.cs" />
     <Compile Include="MetricSelectionUI.xaml.cs" />
     <Compile Include="NameToResourceConverter.cs" />
+    <Compile Include="RingBuffer.cs" />
     <Compile Include="UpperCaseConverter.cs" />
     <Compile Include="VideoWindow.xaml.cs">
       <DependentUpon>VideoWindow.xaml</DependentUpon>

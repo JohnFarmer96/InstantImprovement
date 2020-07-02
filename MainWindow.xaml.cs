@@ -305,7 +305,7 @@ namespace InstantImprovement
         /// </summary>
         private void TurnOnClassifiers()
         {
-            Detector.setDetectAllEmotions(true);
+            Detector.setDetectAllEmotions(false);
             Detector.setDetectAllExpressions(false);
             Detector.setDetectAllEmojis(true);
             Detector.setDetectGender(true);
@@ -354,7 +354,6 @@ namespace InstantImprovement
                 // Detector.setLicenseString(FilePath.GetAffdexLicense());
 
                 Detector.start();
-                Emotions = new Emotions();
 
                 // Hide the logo, show the camera feed and the data canvas
                 logoBackground.Visibility = Visibility.Hidden;
@@ -612,8 +611,10 @@ namespace InstantImprovement
 
         private void btnLaunchVideo_Click(object sender, RoutedEventArgs e)
         {
-            VideoWindow vidWin = new VideoWindow(this);
-            vidWin.ShowDialog();
+            SaveSettings();
+            StopCameraProcessing();
+            VideoWindow vidWin = new VideoWindow();
+            vidWin.Show();
         }
 
         /// <summary>
@@ -667,11 +668,6 @@ namespace InstantImprovement
         /// Affdex Detector
         /// </summary>
         public Affdex.Detector Detector { get; private set; }
-
-        /// <summary>
-        /// Affdex Emotions
-        /// </summary>
-        public Affdex.Emotions Emotions { get; private set; }
 
         /// <summary>
         /// Collection of strings represent the name of the active selected metrics;
