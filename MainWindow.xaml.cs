@@ -277,8 +277,8 @@ namespace InstantImprovement
             try
             {
                 // Hide Camera feed;
-                cameraDisplay.Visibility = cornerLogo.Visibility = Visibility.Hidden;
-
+                cameraDisplay.Visibility = cornerLogo.Visibility = btnLaunchVideo.Visibility = Visibility.Hidden;
+                
                 // Clear any drawn data
                 canvas.Faces = new Dictionary<int, Affdex.Face>();
                 canvas.InvalidateVisual();
@@ -305,7 +305,7 @@ namespace InstantImprovement
         /// </summary>
         private void TurnOnClassifiers()
         {
-            Detector.setDetectAllEmotions(false);
+            Detector.setDetectAllEmotions(true);
             Detector.setDetectAllExpressions(false);
             Detector.setDetectAllEmojis(true);
             Detector.setDetectGender(true);
@@ -354,6 +354,7 @@ namespace InstantImprovement
                 // Detector.setLicenseString(FilePath.GetAffdexLicense());
 
                 Detector.start();
+                Emotions = new Emotions();
 
                 // Hide the logo, show the camera feed and the data canvas
                 logoBackground.Visibility = Visibility.Hidden;
@@ -361,6 +362,7 @@ namespace InstantImprovement
                 cornerLogo.Visibility = Visibility.Visible;
                 canvas.Visibility = Visibility.Visible;
                 cameraDisplay.Visibility = Visibility.Visible;
+                btnLaunchVideo.Visibility = Visibility.Visible;
             }
             catch (Affdex.AffdexException ex)
             {
@@ -610,7 +612,7 @@ namespace InstantImprovement
 
         private void btnLaunchVideo_Click(object sender, RoutedEventArgs e)
         {
-            VideoWindow vidWin = new VideoWindow();
+            VideoWindow vidWin = new VideoWindow(this);
             vidWin.ShowDialog();
         }
 
@@ -664,17 +666,12 @@ namespace InstantImprovement
         /// <summary>
         /// Affdex Detector
         /// </summary>
-        private Affdex.Detector Detector { get; set; }
+        public Affdex.Detector Detector { get; private set; }
 
         /// <summary>
         /// Affdex Emotions
         /// </summary>
-        private Affdex.Emotions Emotions { get; set; }
-
-        /// <summary>
-        /// Affdex Expressions
-        /// </summary>
-        private Affdex.Expressions Expressions { get; set; }
+        public Affdex.Emotions Emotions { get; private set; }
 
         /// <summary>
         /// Collection of strings represent the name of the active selected metrics;

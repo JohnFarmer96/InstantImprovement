@@ -117,7 +117,6 @@
             <StackPanel Name="stackPanelImage" Orientation="Vertical" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
 
                 <Grid Name="gridAffdexFaceDisplay" VerticalAlignment="Stretch" Width="1280" Height="680" >
-                    <Button Name="btnLaunchVideo" Style="{StaticResource CustomButtonStyle}" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,80, 0, 0" Content="Launch Video" />
                     <Image Name="cameraDisplay" Visibility="Hidden" HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="UniformToFill"/>
 
                     <Image Name="logoBackground" Margin="40,40,40,85" Width="auto" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
@@ -129,7 +128,7 @@
                 </Grid>
             </StackPanel>
 
-            <StackPanel Name="cornerLogo" Orientation="Vertical" Background="Transparent" Height="75" HorizontalAlignment="Stretch" VerticalAlignment="Top" >
+            <StackPanel Name="cornerLogo" Orientation="Vertical" Background="Transparent" Height="150" HorizontalAlignment="Stretch" VerticalAlignment="Top" >
                 <Grid Name="gridLogoBackground">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="0.36*" />
@@ -147,6 +146,7 @@
                             HorizontalAlignment="Right" VerticalAlignment="Stretch" 
                             Height="Auto" Source="Resources\exponentials_Logo.png" Margin="0,10,10,-24" Grid.RowSpan="3" Grid.ColumnSpan="1"/>
                 </Grid>
+                <Button Name="btnLaunchVideo" Style="{StaticResource CustomButtonStyle}" VerticalAlignment="Top" Background="LightGray" Foreground="#575757" HorizontalAlignment="Right" Margin="0, 25, 40, 0" Padding="20,0,20,0" Content="Launch Demonstration Video" />
             </StackPanel>
         </Grid>
 

@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -11,6 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Affdex;
 using LiveCharts;
 using LiveCharts.Wpf;
 
@@ -21,54 +24,121 @@ namespace InstantImprovement
     /// </summary>
     public partial class VideoWindow : Window
     {
-        public VideoWindow()
+        public VideoWindow(MainWindow mainWindow)
         {
             InitializeComponent();
+            InitializeChart();
 
-            SeriesCollection = new SeriesCollection
-            {
-                new LineSeries
-                {
-                    Title = "Series 1",
-                    Values = new ChartValues<double> { 4, 6, 5, 2 ,4 }
-                },
-                new LineSeries
-                {
-                    Title = "Series 2",
-                    Values = new ChartValues<double> { 6, 7, 3, 4 ,6 },
-                    PointGeometry = null
-                },
-                new LineSeries
-                {
-                    Title = "Series 3",
-                    Values = new ChartValues<double> { 4,2,7,2,7 },
-                    PointGeometry = DefaultGeometries.Square,
-                    PointGeometrySize = 15
-                }
-            };
-
-            Labels = new[] { "Jan", "Feb", "Mar", "Apr", "May" };
-            YFormatter = value => value.ToString("C");
-
-            //modifying the series collection will animate and update the chart
-            SeriesCollection.Add(new LineSeries
-            {
-                Title = "Series 4",
-                Values = new ChartValues<double> { 5, 3, 2, 4 },
-                LineSmoothness = 0, //0: straight lines, 1: really smooth lines
-                PointGeometry = Geometry.Parse("m 25 70.36218 20 -28 -20 22 -8 -6 z"),
-                PointGeometrySize = 50,
-                PointForeground = Brushes.Gray
-            });
-
-            //modifying any series values will also animate and update the chart
-            SeriesCollection[3].Values.Add(5d);
-
+            MainWindow = mainWindow;
             DataContext = this;
         }
 
         public SeriesCollection SeriesCollection { get; set; }
-        public string[] Labels { get; set; }
-        public Func<double, string> YFormatter { get; set; }
+        public MainWindow MainWindow { get; private set; }
+        private Thread T { get; set; }
+
+        /// <summary>
+        /// Initialize Chart Series Collection with all available Emotions
+        /// </summary>
+        private void InitializeChart()
+        {
+            SeriesCollection = new SeriesCollection
+            {
+                new LineSeries
+                {
+                    Title = "Anger",
+                    PointGeometry = null
+                },
+                new LineSeries
+                {
+                    Title = "Contempt",
+                    PointGeometry = null
+                },
+                new LineSeries
+                {
+                    Title = "Disgust",
+                    PointGeometry = null
+                },
+                new LineSeries
+                {
+                    Title = "Engagement",
+                    PointGeometry = null
+                },
+                new LineSeries
+                {
+                    Title = "Fear",
+                    PointGeometry = null
+                },
+                new LineSeries
+                {
+                    Title = "Joy",
+                    PointGeometry = null
+                },
+                new LineSeries
+                {
+                    Title = "Sadness",
+                    PointGeometry = null
+                },
+                new LineSeries
+                {
+                    Title = "Surprise",
+                    PointGeometry = null
+                },
+                new LineSeries
+                {
+                    Title = "Valence",
+                    PointGeometry = null
+                }
+            };
+        }
+
+
+        /// <summary>
+        /// Continuously Update Emotions on Chart Control
+        /// </summary>
+        private void UpdateChart()
+        {
+            Task.Delay(100);
+            var temp = MainWindow.Emotions;
+            Console.WriteLine(MainWindow.Detector.isRunning());
+            Console.WriteLine(temp.Anger);
+            Console.WriteLine(temp.Contempt);
+            Console.WriteLine(temp.Disgust);
+            Console.WriteLine(temp.Engagement);
+            Console.WriteLine(temp.Fear);
+            Console.WriteLine(temp.Joy);
+            Console.WriteLine(temp.Sadness);
+            Console.WriteLine(temp.Surprise);
+            Console.WriteLine(temp.Valence);
+            //Dispatcher.Invoke(() =>
+            //{
+            //    SeriesCollection[0].Values.Add(MainWindow.Emotions.Anger);
+            //    SeriesCollection[1].Values.Add(MainWindow.Emotions.Contempt);
+            //    SeriesCollection[2].Values.Add(MainWindow.Emotions.Disgust);
+            //    SeriesCollection[3].Values.Add(MainWindow.Emotions.Engagement);
+            //    SeriesCollection[4].Values.Add(MainWindow.Emotions.Fear);
+            //    SeriesCollection[5].Values.Add(MainWindow.Emotions.Joy);
+            //    SeriesCollection[6].Values.Add(MainWindow.Emotions.Sadness);
+            //    SeriesCollection[7].Values.Add(MainWindow.Emotions.Surprise);
+            //    SeriesCollection[8].Values.Add(MainWindow.Emotions.Valence);
+            //});
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            T = new Thread( () =>
+            {
+                while(true)
+                {
+                    UpdateChart();
+                }
+            });
+            T.Start();
+        }
+
+        private void Window_Closing(object sender, CancelEventArgs e)
+        {
+            T.Abort();
+        }
     }
 }
