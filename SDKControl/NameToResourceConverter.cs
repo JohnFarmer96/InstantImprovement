@@ -7,7 +7,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Media.Imaging;
 
-namespace InstantImprovement
+namespace InstantImprovement.SDKControl
 {
     public class NameToResourceConverter : System.Windows.Data.IValueConverter
     {

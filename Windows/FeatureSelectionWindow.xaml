@@ -1,15 +1,15 @@
-﻿<Window x:Class="InstantImprovement.MetricSelectionUI"
+﻿<Window x:Class="InstantImprovement.Windows.MetricSelectionUI"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:InstantImprovement="clr-namespace:InstantImprovement"
+        xmlns:SDKControl="clr-namespace:InstantImprovement.SDKControl"
         Title="Instant Improvement: Select Features (Emotions and Expressions)" 
         Height="640" Width="567" ResizeMode="NoResize" Closing="Window_Closing">
     <Grid>
         <ScrollViewer Margin="0,0,0,45">
             <Grid Name="theGrid" Background="Black">
                 <Grid.Resources>
-                    <InstantImprovement:UpperCaseConverter x:Key="StringToUpper" />
-                    <InstantImprovement:NameToResourceConverter x:Key="ResourceFileName" />
+                    <SDKControl:UpperCaseConverter x:Key="StringToUpper" />
+                    <SDKControl:NameToResourceConverter x:Key="ResourceFileName" />
                 </Grid.Resources>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="180" />

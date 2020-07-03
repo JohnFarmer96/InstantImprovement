@@ -5,7 +5,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace InstantImprovement
+namespace InstantImprovement.SDKControl
 {
     public class UpperCaseConverter : System.Windows.Data.IValueConverter
     {

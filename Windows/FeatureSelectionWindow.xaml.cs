@@ -15,7 +15,7 @@ using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace InstantImprovement
+namespace InstantImprovement.Windows
 {
     /// <summary>
     /// Interaction logic for Window1.xaml

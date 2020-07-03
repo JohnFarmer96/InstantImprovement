@@ -6,19 +6,18 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Reflection;
-using System.Windows.Shapes;
 using System.IO;
-using System.Windows.Controls.Primitives;
 using Affdex;
+using InstantImprovement.SDKControl;
+using InstantImprovement.Visualization;
 
-namespace InstantImprovement
+namespace InstantImprovement.Windows
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window, Affdex.ImageListener, Affdex.ProcessStatusListener
     {
-
         public MainWindow()
         {
             InitializeComponent();

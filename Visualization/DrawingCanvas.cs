@@ -1,14 +1,13 @@
-﻿using System;
+﻿using InstantImprovement.SDKControl;
+using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
-namespace InstantImprovement
+namespace InstantImprovement.Visualization
 {
     public class DrawingCanvas: System.Windows.Controls.Canvas
     {
@@ -17,7 +16,6 @@ namespace InstantImprovement
         /// </summary>
         public DrawingCanvas()
         {
-
             DrawMetrics = true;
             DrawPoints = true;
             DrawAppearance = true;
@@ -30,7 +28,7 @@ namespace InstantImprovement
             boundingPen = new Pen(boundingBrush, 1);
 
             NameToResourceConverter conv = new NameToResourceConverter();
-            metricTypeFace = Fonts.GetTypefaces((Uri)conv.Convert("Square", null, "ttf", null)).First();
+            metricTypeFace = Fonts.GetTypefaces((Uri)conv.Convert("Square", null, "ttf", null)).FirstOrDefault();
             
             Faces = new Dictionary<int, Affdex.Face>();
             emojiImages = new Dictionary<Affdex.Emoji, BitmapImage>();
@@ -56,10 +54,7 @@ namespace InstantImprovement
                     BitmapImage img = loadImage(name);
                     appImgs.Add(name, img);
                 }
-                
             }
- 
-
         }
 
         /// <summary>

@@ -87,26 +87,29 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DrawingCanvas.cs" />
-    <Compile Include="FilePath.cs" />
-    <Compile Include="Windows\MetricSelectionUI.xaml.cs" />
-    <Compile Include="NameToResourceConverter.cs" />
-    <Compile Include="RingBuffer.cs" />
-    <Compile Include="UpperCaseConverter.cs" />
+    <Compile Include="Visualization\DrawingCanvas.cs" />
+    <Compile Include="SDKControl\FilePath.cs" />
+    <Compile Include="SDKControl\NameToResourceConverter.cs" />
+    <Compile Include="DataControl\RingBuffer.cs" />
+    <Compile Include="SDKControl\CameraControl.cs" />
+    <Compile Include="SDKControl\UpperCaseConverter.cs" />
+    <Compile Include="Windows\MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\FeatureSelectionWindow.xaml.cs">
+      <DependentUpon>FeatureSelectionWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\VideoWindow.xaml.cs">
       <DependentUpon>VideoWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="App.cs">
+      <SubType>Code</SubType>
     </Compile>
     <Page Include="Windows\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Compile Include="App.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Windows\MainWindow.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Page Include="Windows\MetricSelectionUI.xaml">
+    <Page Include="Windows\FeatureSelectionWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -124,28 +127,32 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="$(ProjectDir)Properties\Settings.Designer.cs">
+    <Compile Include="C:\Projects\ProVIL\Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
-      <DependentUpon>$(ProjectDir)Settings.settings</DependentUpon>
+      <DependentUpon>C:\Projects\ProVIL\Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>$(ProjectDir)Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="$(ProjectDir)Properties\Settings.settings">
+    <None Include="C:\Projects\ProVIL\Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>$(ProjectDir)Settings.Designer.cs</LastGenOutput>
+      <LastGenOutput>C:\Projects\ProVIL\Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="$(ProjectDir)Properties\" />
     <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>C:\Projects\ProVIL\Settings.Designer.cs</LastGenOutput>
+    </None>
     <Resource Include="Resources\Square.ttf" />
   </ItemGroup>
   <ItemGroup>
     <None Include="$(ProjectDir)App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="C:\Projects\ProVIL\Resources\AffectivaLogo1.png" />
+    <Resource Include="Resources\AffectivaLogo1.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\00.png" />

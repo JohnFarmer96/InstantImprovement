@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace InstantImprovement
+namespace InstantImprovement.DataControl
 {
     public class RingBuffer
     {
