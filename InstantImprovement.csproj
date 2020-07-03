@@ -89,29 +89,28 @@
   <ItemGroup>
     <Compile Include="DrawingCanvas.cs" />
     <Compile Include="FilePath.cs" />
-    <Compile Include="MetricSelectionUI.xaml.cs" />
+    <Compile Include="Windows\MetricSelectionUI.xaml.cs" />
     <Compile Include="NameToResourceConverter.cs" />
     <Compile Include="RingBuffer.cs" />
     <Compile Include="UpperCaseConverter.cs" />
-    <Compile Include="VideoWindow.xaml.cs">
+    <Compile Include="Windows\VideoWindow.xaml.cs">
       <DependentUpon>VideoWindow.xaml</DependentUpon>
     </Compile>
-    <Page Include="C:\Projects\ProVIL\MainWindow.xaml">
+    <Page Include="Windows\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
     <Compile Include="App.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="C:\Projects\ProVIL\MainWindow.xaml.cs">
-      <DependentUpon>C:\Projects\ProVIL\MainWindow.xaml</DependentUpon>
+    <Compile Include="Windows\MainWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="MetricSelectionUI.xaml">
+    <Page Include="Windows\MetricSelectionUI.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="VideoWindow.xaml">
+    <Page Include="Windows\VideoWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

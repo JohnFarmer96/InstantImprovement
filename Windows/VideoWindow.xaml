@@ -102,6 +102,7 @@
                 <RowDefinition Height="30*" />
             </Grid.RowDefinitions>
             <MediaElement Name="VideoControl" LoadedBehavior="Manual" Grid.Column="0" Grid.Row="0" Margin="10"></MediaElement>
+            <Button Name="btnExportResults" Style="{StaticResource CustomButtonStyle}" VerticalAlignment="Top" Background="LightGray" Foreground="#575757" HorizontalAlignment="Right" Margin="0, 25, 40, 0" Padding="20,0,20,0" Content="Export Results" />
 
             <lvc:CartesianChart Name="EmotionTimeline" Grid.Column="0" Grid.Row="1" LegendLocation="Right" Margin="10">
                 <lvc:CartesianChart.AxisY>
