@@ -71,6 +71,10 @@
     <Reference Include="LiveCharts.Wpf, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
       <HintPath>packages\LiveCharts.Wpf.0.9.7\lib\net45\LiveCharts.Wpf.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Office.Interop.Excel.15.0.4795.1000\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -87,11 +91,13 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataControl\DataManager.cs" />
+    <Compile Include="DataControl\XLSExporter.cs" />
     <Compile Include="Visualization\DrawingCanvas.cs" />
     <Compile Include="SDKControl\FilePath.cs" />
     <Compile Include="SDKControl\NameToResourceConverter.cs" />
     <Compile Include="DataControl\RingBuffer.cs" />
-    <Compile Include="SDKControl\CameraControl.cs" />
+    <Compile Include="SDKControl\FaceWatcher.cs" />
     <Compile Include="SDKControl\UpperCaseConverter.cs" />
     <Compile Include="Windows\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>

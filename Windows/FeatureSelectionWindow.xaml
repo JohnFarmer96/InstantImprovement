@@ -1,4 +1,4 @@
-﻿<Window x:Class="InstantImprovement.Windows.MetricSelectionUI"
+﻿<Window x:Class="InstantImprovement.Windows.FeatureSelectionWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:SDKControl="clr-namespace:InstantImprovement.SDKControl"

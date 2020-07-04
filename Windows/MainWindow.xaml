@@ -8,8 +8,8 @@
         MaxHeight="720" MaxWidth="1280"
         ResizeMode="NoResize"
         
-        Loaded="Window_Loaded"
-        Closing="Window_Closing">
+        Loaded="MainWindow_Loaded"
+        Closing="MainWindow_Closing">
 
 
     <Window.Resources>
@@ -146,7 +146,7 @@
                             HorizontalAlignment="Right" VerticalAlignment="Stretch" 
                             Height="Auto" Source="..\Resources\exponentials_Logo.png" Margin="0,10,10,-24" Grid.RowSpan="3" Grid.ColumnSpan="1"/>
                 </Grid>
-                <Button Name="btnLaunchVideo" Style="{StaticResource CustomButtonStyle}" VerticalAlignment="Top" Background="LightGray" Foreground="#575757" HorizontalAlignment="Right" Margin="0, 25, 40, 0" Padding="20,0,20,0" Content="Launch Demonstration Video" />
+                <Button Name="LaunchVideo" Style="{StaticResource CustomButtonStyle}" VerticalAlignment="Top" Background="LightGray" Foreground="#575757" HorizontalAlignment="Right" Margin="0, 25, 40, 0" Padding="20,0,20,0" Content="Launch Demonstration Video" />
             </StackPanel>
         </Grid>
 
@@ -158,16 +158,16 @@
             <Grid HorizontalAlignment="Center">
                 <GroupBox Margin="0,5,0,0"  Height="60" VerticalAlignment="Stretch" BorderBrush="Transparent" BorderThickness="0">
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-                        <Button Name="btnStartCamera" Style="{StaticResource CustomButtonStyle}" HorizontalAlignment="Center" Margin="0,0,5,0" VerticalAlignment="Center" Width="80" Content="Start" />
-                        <Button Name="btnResetCamera" Style="{StaticResource CustomButtonStyle}" HorizontalAlignment="Center" Margin="0,0,5,0" VerticalAlignment="Center" Width="80" Content="Reset" />
+                        <Button Name="StartCamera" Style="{StaticResource CustomButtonStyle}" HorizontalAlignment="Center" Margin="0,0,5,0" VerticalAlignment="Center" Width="80" Content="Start" />
+                        <Button Name="ResetCamera" Style="{StaticResource CustomButtonStyle}" HorizontalAlignment="Center" Margin="0,0,5,0" VerticalAlignment="Center" Width="80" Content="Reset" />
                         <Button Name="Features" Style="{StaticResource CustomButtonStyle}" HorizontalAlignment="Center" Margin="0,0,5,0" VerticalAlignment="Center" Width="80" Content="Features" />
-                        <Button Name="btnChooseWin" Style="{StaticResource CustomButtonStyle}" HorizontalAlignment="Center" Margin="0,0,5,0" VerticalAlignment="Center" Width="80" Content="Select Features" Click="btnChooseWin_Click" />
+                        <Button Name="btnChooseWin" Style="{StaticResource CustomButtonStyle}" HorizontalAlignment="Center" Margin="0,0,5,0" VerticalAlignment="Center" Width="80" Content="Select Features" Click="FeatureSelection_Click" />
                         <Button Name="FacePoints" Style="{StaticResource CustomButtonStyle}" HorizontalAlignment="Center" Margin="0,0,5,0" VerticalAlignment="Center" Width="80" Content="Face-Points" />
                         <Button Name="FeatureEmojis" Style="{StaticResource CustomButtonStyle}" HorizontalAlignment="Center" Margin="0,0,5,0" VerticalAlignment="Center" Width="80" Content="Feature-Emojis" />
                         <Button Name="UserEmoji" Style="{StaticResource CustomButtonStyle}" HorizontalAlignment="Center" Margin="0,0,5,0" VerticalAlignment="Center" Width="110" Content="User-Empoji" />
-                        <Button Name="btnAppShot" Style="{StaticResource CustomButtonStyle}" HorizontalAlignment="Center" Margin="0,0,5,0" VerticalAlignment="Center" Width="100" Content="Screen Capture" />
-                        <Button Name="btnStopCamera" Style="{StaticResource CustomButtonStyle}" HorizontalAlignment="Center" Margin="0,0,5,0" VerticalAlignment="Center" Width="80" Content="Stop Analysis" />
-                        <Button Name="btnExit" Style="{StaticResource CustomButtonStyle}" HorizontalAlignment="Center" Margin="0,0,5,0" VerticalAlignment="Center" Width="80" Content="Exit App" />
+                        <Button Name="AppShot" Style="{StaticResource CustomButtonStyle}" HorizontalAlignment="Center" Margin="0,0,5,0" VerticalAlignment="Center" Width="100" Content="Screen Capture" />
+                        <Button Name="StopCamera" Style="{StaticResource CustomButtonStyle}" HorizontalAlignment="Center" Margin="0,0,5,0" VerticalAlignment="Center" Width="80" Content="Stop Analysis" />
+                        <Button Name="Exit" Style="{StaticResource CustomButtonStyle}" HorizontalAlignment="Center" Margin="0,0,5,0" VerticalAlignment="Center" Width="80" Content="Exit App" />
                     </StackPanel>
                 </GroupBox>
             </Grid>

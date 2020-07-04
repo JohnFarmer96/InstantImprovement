@@ -8,8 +8,8 @@
         MinHeight="640" MinWidth="480"
         MaxHeight="720" MaxWidth="1280"
         ResizeMode="NoResize"
-        Loaded="Window_Loaded"
-        Closing="Window_Closing">
+        Loaded="VideoWindow_Loaded"
+        Closing="VideoWindow_Closing">
 
     <Window.Resources>
         <Style TargetType="{x:Type Label}" x:Key="appShotLocLabelStyle">
