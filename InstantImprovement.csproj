@@ -92,9 +92,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataControl\DataManager.cs" />
+    <Compile Include="DataControl\DataPayload.cs" />
     <Compile Include="DataControl\XLSExporter.cs" />
+    <Compile Include="SDKControl\FaceWatcherEventArgs.cs" />
     <Compile Include="Visualization\DrawingCanvas.cs" />
-    <Compile Include="SDKControl\FilePath.cs" />
     <Compile Include="SDKControl\NameToResourceConverter.cs" />
     <Compile Include="DataControl\RingBuffer.cs" />
     <Compile Include="SDKControl\FaceWatcher.cs" />

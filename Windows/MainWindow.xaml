@@ -3,11 +3,9 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
         xmlns:Visualization="clr-namespace:InstantImprovement.Visualization;assembly="
         Title="Instant Improvement" 
-        Height="720" Width="1280"
-        MinHeight="640" MinWidth="480"
-        MaxHeight="720" MaxWidth="1280"
-        ResizeMode="NoResize"
-        
+        MinHeight="700" MinWidth="1300"
+        Height="700" Width="1300"
+        ResizeMode="CanResize"
         Loaded="MainWindow_Loaded"
         Closing="MainWindow_Closing">
 
@@ -110,21 +108,19 @@
 
     </Window.Resources>
 
-    <Grid Name="gridMainDisplay" Margin="0,0,0,0" >
+    <Grid Name="gridMainDisplay" Margin="0,0,0,0">
 
         <Grid Name="gridContentDisplay" DockPanel.Dock="Top">
             
-            <StackPanel Name="stackPanelImage" Orientation="Vertical" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+            <StackPanel Name="stackPanelImage" Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
 
-                <Grid Name="gridAffdexFaceDisplay" VerticalAlignment="Stretch" Width="1280" Height="680" >
+                <Grid Name="gridAffdexFaceDisplay" VerticalAlignment="Center" HorizontalAlignment="Center" >
                     <Image Name="cameraDisplay" Visibility="Hidden" HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="UniformToFill"/>
 
-                    <Image Name="logoBackground" Margin="40,40,40,85" Width="auto" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
-                            Height="auto" Source="..\Resources\exponentials_Logo.png" Visibility="Visible"/>
+                    <Image Name="logoBackground" Width="Auto" HorizontalAlignment="Center" VerticalAlignment="Center" Height="Auto" Margin="30" Source="..\Resources\exponentials_Logo.png" Visibility="Visible"/>
 
-                    <Visualization:DrawingCanvas x:Name="canvas" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    <Visualization:DrawingCanvas x:Name="canvas" HorizontalAlignment="Center" VerticalAlignment="Center" Height="Auto" Width="Auto"/>
                     <Label Name="appShotLocLabel" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{StaticResource appShotLocLabelStyle}" />
-                    <Label Name="affdexLabel" Content="This Application was built with Affdex SDK" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,0,60" FontSize="50" FontFamily="Helvetica" FontWeight="ExtraLight" Foreground="#575757"/>
                 </Grid>
             </StackPanel>
 
@@ -147,6 +143,13 @@
                             Height="Auto" Source="..\Resources\exponentials_Logo.png" Margin="0,10,10,-24" Grid.RowSpan="3" Grid.ColumnSpan="1"/>
                 </Grid>
                 <Button Name="LaunchVideo" Style="{StaticResource CustomButtonStyle}" VerticalAlignment="Top" Background="LightGray" Foreground="#575757" HorizontalAlignment="Right" Margin="0, 25, 40, 0" Padding="20,0,20,0" Content="Launch Demonstration Video" />
+            </StackPanel>
+            <StackPanel Name="authorInformation" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20, 10, 0, 0">
+                <Label Name="authorName" Content="© Jonathan Bauer - 2020" FontSize="20" FontFamily="Helvetica" FontWeight="ExtraLight" Foreground="#575757" Padding="0"/>
+                <Label Name="link" Content="More information: https://jonathanbauer.me" FontSize="13" FontFamily="Helvetica" FontWeight="ExtraLight" Foreground="#575757" Padding="0"/>
+            </StackPanel>
+            <StackPanel VerticalAlignment="Bottom" Margin="0,0,0,60">
+                <Label Name="affdexLabel" Content="This Application was built with Affdex SDK" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="40" FontFamily="Helvetica" FontWeight="ExtraLight" Foreground="#575757"/>
             </StackPanel>
         </Grid>
 

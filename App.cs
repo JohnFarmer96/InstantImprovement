@@ -1,4 +1,14 @@
-﻿using System;
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="App.cs" author="Jonathan Bauer (Based on the work of saviourofdp/affdexme-win)">
+// Project-Code: Copyright (c) 2020 - Jonathan Bauer. All Rights Reserved
+// Affdex SDK: Copyright (c) 2016 - Affectiva. All Rights Reserved
+// </copyright>
+// <summary>
+// Application Entry Point
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
+using System;
 using System.Windows;
 using InstantImprovement.Windows;
 using Microsoft.VisualBasic.ApplicationServices;

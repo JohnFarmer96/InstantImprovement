@@ -1,60 +1,91 @@
-﻿using InstantImprovement.SDKControl;
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="DrawingCanvas.cs" author="Jonathan Bauer (Based on the work of saviourofdp/affdexme-win)">
+// Project-Code: Copyright (c) 2020 - Jonathan Bauer. All Rights Reserved
+// Affdex SDK: Copyright (c) 2016 - Affectiva. All Rights Reserved
+// </copyright>
+// <summary>
+// Customized Canvas to Display AffdexSDK AI-Results
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
+
+using Affdex;
+using InstantImprovement.DataControl;
+using InstantImprovement.SDKControl;
 using System;
 using System.Collections.Generic;
-using System.Collections.Specialized;
 using System.Linq;
-using System.Reflection;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
 namespace InstantImprovement.Visualization
 {
-    public class DrawingCanvas: System.Windows.Controls.Canvas
+    /// <summary>
+    /// Customized Canvas to Display AffdexSDK AI-Results
+    /// </summary>
+    public class DrawingCanvas : System.Windows.Controls.Canvas
     {
+        private const int _fpRadius = 2;
+
+        private const int _margin = 5;
+
+        private const int _metricFontSize = 14;
+
+        private Dictionary<string, BitmapImage> _appImgs;
+
+        private SolidColorBrush _boundingBrush;
+
+        private Pen _boundingPen;
+
+        private SolidColorBrush _emojiBrush;
+
+        private Dictionary<Affdex.Emoji, BitmapImage> _emojiImages;
+
+        private double _maxTxtHeight;
+
+        private double _maxTxtWidth;
+
+        private Typeface _metricTypeFace;
+
+        private SolidColorBrush _negMetricBrush;
+
+        private SolidColorBrush _pointBrush;
+
+        private SolidColorBrush _pozMetricBrush;
+
+        private UpperCaseConverter _upperConverter;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="DrawingCanvas"/> class.
         /// </summary>
         public DrawingCanvas()
         {
-            DrawMetrics = true;
-            DrawPoints = true;
-            DrawAppearance = true;
-            DrawEmojis = true;
-            boundingBrush = new SolidColorBrush(Colors.LightGray);
-            pointBrush = new SolidColorBrush(Colors.Cornsilk);
-            emojiBrush = new SolidColorBrush(Colors.Black);
-            pozMetricBrush = new SolidColorBrush(Colors.LimeGreen);
-            negMetricBrush = new SolidColorBrush(Colors.Red);
-            boundingPen = new Pen(boundingBrush, 1);
+            Init();
+        }
 
-            NameToResourceConverter conv = new NameToResourceConverter();
-            metricTypeFace = Fonts.GetTypefaces((Uri)conv.Convert("Square", null, "ttf", null)).FirstOrDefault();
-            
-            Faces = new Dictionary<int, Affdex.Face>();
-            emojiImages = new Dictionary<Affdex.Emoji, BitmapImage>();
-            appImgs = new Dictionary<string, BitmapImage>();
-            MetricNames = new StringCollection();
-            upperConverter = new UpperCaseConverter();
-            maxTxtWidth = 0;
-            maxTxtHeight = 0;
+        /// <summary>
+        /// Face Dictionary to store detected Faces
+        /// </summary>
+        public Dictionary<int, Affdex.Face> Faces { get; set; }
 
-            var emojis = Enum.GetValues(typeof(Affdex.Emoji));
-            foreach (int emojiVal in emojis)
-            {
-                BitmapImage img = loadImage(emojiVal.ToString());
-                emojiImages.Add((Affdex.Emoji) emojiVal, img);
-            }
+        public bool ShowAppearance { get; set; }
 
-            var gender = Enum.GetValues(typeof(Affdex.Gender));
-            foreach (int genderVal in gender)
-            {
-                for (int g = 0; g <= 1 ; g++)
-                {
-                    string name = ConcatInt(genderVal, g);
-                    BitmapImage img = loadImage(name);
-                    appImgs.Add(name, img);
-                }
-            }
+        public bool ShowEmojis { get; set; }
+
+        public bool ShowMetrics { get; set; }
+
+        public bool ShowPoints { get; set; }
+
+        public double XScale { get; set; }
+
+        public double YScale { get; set; }
+
+        /// <summary>
+        /// Restart custom DrawingCanvas: all Elements are reinitialized
+        /// </summary>
+        public void Restart()
+        {
+            Init();
         }
 
         /// <summary>
@@ -63,14 +94,12 @@ namespace InstantImprovement.Visualization
         /// <param name="dc">The <see cref="T:System.Windows.Media.DrawingContext" /> object to draw.</param>
         protected override void OnRender(System.Windows.Media.DrawingContext dc)
         {
-
             //For each face
             foreach (KeyValuePair<int, Affdex.Face> pair in Faces)
             {
-                
                 Affdex.Face face = pair.Value;
 
-                var featurePoints = face.FeaturePoints;
+                FeaturePoint[] featurePoints = face.FeaturePoints;
 
                 //Calculate bounding box corners coordinates.
                 System.Windows.Point tl = new System.Windows.Point(featurePoints.Min(r => r.X) * XScale,
@@ -80,138 +109,209 @@ namespace InstantImprovement.Visualization
 
                 System.Windows.Point bl = new System.Windows.Point(tl.X, br.Y);
 
-                //Draw Points
-                if (DrawPoints)
-                {
-                    foreach (var point in featurePoints)
-                    {
-                        dc.DrawEllipse(pointBrush, null, new System.Windows.Point(point.X * XScale, point.Y * YScale), fpRadius, fpRadius);
-                    }
+                if (ShowPoints)
+                    DrawPoints(featurePoints, dc, tl, br);
 
-                    //Draw BoundingBox
-                    dc.DrawRectangle(null, boundingPen, new System.Windows.Rect(tl, br));
-                }
+                if (ShowMetrics)
+                    DrawMetrics(face, dc, tl, br);
 
-                //Draw Metrics  
-                if (DrawMetrics)
-                {
-                    double padding = (bl.Y - tl.Y) / MetricNames.Count;
-                    double startY = tl.Y - padding;
-                    foreach (string metric in MetricNames)
-                    {
-                        double width = maxTxtWidth;
-                        double height = maxTxtHeight;
-                        float value = -1;
-                        PropertyInfo info;
-                        if ((info = face.Expressions.GetType().GetProperty(NameMappings(metric))) != null)
-                        {
-                            value = (float)info.GetValue(face.Expressions, null);
-                        }
-                        else if ((info = face.Emotions.GetType().GetProperty(NameMappings(metric))) != null)
-                        {
-                            value = (float)info.GetValue(face.Emotions, null);
-                        }
-                        else if ((info = face.Emotions.GetType().GetProperty(NameMappings(metric))) != null)
-                        {
-                            value = (float)info.GetValue(face.Emojis, null);
-                        }
+                if (ShowEmojis)
+                    DrawEmojis(face, dc, tl, br);
 
-                        SolidColorBrush metricBrush = value > 0 ? pozMetricBrush : negMetricBrush;
-                        value = Math.Abs(value);
-                        SolidColorBrush txtBrush = value > 1 ? emojiBrush : boundingBrush;
-
-                        double x = tl.X - width - margin;
-                        double y = startY += padding;
-                        double valBarWidth = width * (value / 100);
-
-                        if (value > 1) dc.DrawRectangle(null, boundingPen, new System.Windows.Rect(x, y, width, height));
-                        dc.DrawRectangle(metricBrush, null, new System.Windows.Rect(x, y, valBarWidth, height));
-
-                        FormattedText metricFTScaled = new FormattedText((String)upperConverter.Convert(metric, null, null, null),
-                                                                System.Globalization.CultureInfo.CurrentCulture,
-                                                                System.Windows.FlowDirection.LeftToRight,
-                                                                metricTypeFace, metricFontSize * width / maxTxtWidth, txtBrush);
-
-                        dc.DrawText(metricFTScaled, new System.Windows.Point(x, y));
-                    }
-                }
-
-
-                //Draw Emoji
-                if (DrawEmojis)
-                {
-                    if (face.Emojis.dominantEmoji != Affdex.Emoji.Unknown)
-                    {
-                        BitmapImage img = emojiImages[face.Emojis.dominantEmoji];
-                        double imgRatio = ((br.Y - tl.Y) * 0.3) / img.Width;
-                        System.Windows.Point tr = new System.Windows.Point(br.X + margin, tl.Y);
-                        dc.DrawImage(img, new System.Windows.Rect(tr.X, tr.Y, img.Width * imgRatio, img.Height * imgRatio));
-                    }
-                }
-
-                //Draw Appearance metrics
-                if (DrawAppearance)
-                {
-                    BitmapImage img = appImgs[ConcatInt((int)face.Appearance.Gender, (int)face.Appearance.Glasses)];
-                    double imgRatio = ((br.Y - tl.Y) * 0.3) / img.Width;
-                    double imgH = img.Height * imgRatio;
-                    dc.DrawImage(img, new System.Windows.Rect(br.X + margin, br.Y - imgH, img.Width * imgRatio, imgH));
-                }
+                if (ShowAppearance)
+                    DrawAppearance(face, dc, tl, br);
             }
-
-            
-            
-            
-            //base.OnRender(dc);
+            base.OnRender(dc);
         }
 
-        public String NameMappings(String classifierName)
+        /// <summary>
+        /// Concatenation of 2 Integers
+        /// </summary>
+        /// <param name="x">Integer 1</param>
+        /// <param name="y">Integer 2</param>
+        /// <returns></returns>
+        private string ConcatInt(int x, int y)
         {
-            if (classifierName == "Frown")
-            {
-                return "LipCornerDepressor";
-            }
-            return classifierName;
+            return String.Format("{0}{1}", x, y);
         }
 
-        public Dictionary<int, Affdex.Face> Faces { get; set; }
-        public StringCollection MetricNames
+        /// <summary>
+        /// Draw Appearence-Emoji on Webcam-Video for given face-parameters
+        /// </summary>
+        /// <param name="face">Input-Face</param>
+        /// <param name="dc">Drawing Context of Webcam Video</param>
+        /// <param name="tl">Point (top left)</param>
+        /// <param name="br">Point (bottom right)</param>
+        private void DrawAppearance(Face face, DrawingContext dc, System.Windows.Point tl, System.Windows.Point br)
         {
-            get
+            BitmapImage img = _appImgs[ConcatInt((int)face.Appearance.Gender, (int)face.Appearance.Glasses)];
+            double imgRatio = ((br.Y - tl.Y) * 0.3) / img.Width;
+            double imgH = img.Height * imgRatio;
+            dc.DrawImage(img, new System.Windows.Rect(br.X + _margin, br.Y - imgH, img.Width * imgRatio, imgH));
+        }
+
+        /// <summary>
+        /// Draw Feature Emoji on Webcam-Video for given face-parameters
+        /// </summary>
+        /// <param name="face">Input-Face</param>
+        /// <param name="dc">Drawing Context of Webcam Video</param>
+        /// <param name="tl">Point (top left)</param>
+        /// <param name="br">Point (bottom right)</param>
+        private void DrawEmojis(Face face, DrawingContext dc, System.Windows.Point tl, System.Windows.Point br)
+        {
+            if (face.Emojis.dominantEmoji != Affdex.Emoji.Unknown)
             {
-                return metricNames;
+                BitmapImage img = _emojiImages[face.Emojis.dominantEmoji];
+                double imgRatio = ((br.Y - tl.Y) * 0.3) / img.Width;
+                System.Windows.Point tr = new System.Windows.Point(br.X + _margin, tl.Y);
+                dc.DrawImage(img, new System.Windows.Rect(tr.X, tr.Y, img.Width * imgRatio, img.Height * imgRatio));
             }
-            set
+        }
+
+        /// <summary>
+        /// Draw Feature Metrics on Webcam-Video according to given face-parameters and Classificator Selection
+        /// </summary>
+        /// <param name="face">Input-Face</param>
+        /// <param name="dc">Drawing Context of Webcam Video</param>
+        /// <param name="tl">Point (top left)</param>
+        /// <param name="bl">Point (bottom left)</param>
+        private void DrawMetrics(Face face, DrawingContext dc, System.Windows.Point tl, System.Windows.Point bl)
+        {
+            double padding = (bl.Y - tl.Y) / DataManager.FaceWatcher.EnabledClassifiers.Count;
+            double startY = tl.Y - padding;
+            foreach (string metric in DataManager.FaceWatcher.EnabledClassifiers)
             {
-                metricNames = value;
-                Dictionary<string, FormattedText> txtArray = new Dictionary<string, FormattedText>();
+                double width = _maxTxtWidth;
+                double height = _maxTxtHeight;
+                float value = DataManager.ExtractFeaturePropertyValue(face, metric);
 
-                foreach (string metric in metricNames)
+                SolidColorBrush metricBrush = value > 0 ? _pozMetricBrush : _negMetricBrush;
+                value = Math.Abs(value);
+                SolidColorBrush txtBrush = value > 1 ? _emojiBrush : _boundingBrush;
+
+                double x = tl.X - width - _margin;
+                double y = startY += padding;
+                double valBarWidth = width * (value / 100);
+
+                if (value > 1) dc.DrawRectangle(null, _boundingPen, new System.Windows.Rect(x, y, width, height));
+                dc.DrawRectangle(metricBrush, null, new System.Windows.Rect(x, y, valBarWidth, height));
+
+                FormattedText metricFTScaled = new FormattedText((String)_upperConverter.Convert(metric, null, null, null),
+                                                        System.Globalization.CultureInfo.CurrentCulture,
+                                                        System.Windows.FlowDirection.LeftToRight,
+                                                        _metricTypeFace, _metricFontSize * width / _maxTxtWidth, txtBrush);
+
+                dc.DrawText(metricFTScaled, new System.Windows.Point(x, y));
+            }
+        }
+
+        /// <summary>
+        /// Draw Feature Points that determine the current Classification State (Face-Emotions & -Expressions)
+        /// </summary>
+        /// <param name="featurePoints">Collection of Feature Points of current Face</param>
+        /// <param name="dc">Drawing Context of Webcam Video</param>
+        /// <param name="tl">Point (top left)</param>
+        /// <param name="br">Point (bottom right)</param>
+        private void DrawPoints(FeaturePoint[] featurePoints, DrawingContext dc, System.Windows.Point tl, System.Windows.Point br)
+        {
+            foreach (var point in featurePoints)
+            {
+                dc.DrawEllipse(_pointBrush, null, new System.Windows.Point(point.X * XScale, point.Y * YScale), _fpRadius, _fpRadius);
+            }
+
+            //Draw BoundingBox
+            var rect = new System.Windows.Rect(tl, br);
+            dc.DrawRectangle(null, _boundingPen, rect);
+        }
+
+        /// <summary>
+        /// Recalculate Drawing Area as Classifiers are Updated
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void FaceWatcher_ClassifierUpdated(object sender, EventArgs e)
+        {
+            Dictionary<string, FormattedText> txtArray = new Dictionary<string, FormattedText>();
+
+            foreach (String metric in DataManager.FaceWatcher.EnabledClassifiers)
+            {
+                FormattedText metricFT = new FormattedText((String)_upperConverter.Convert(metric, null, null, null),
+                                                        System.Globalization.CultureInfo.CurrentCulture,
+                                                        System.Windows.FlowDirection.LeftToRight,
+                                                        _metricTypeFace, _metricFontSize, _emojiBrush);
+                txtArray.Add(metric, metricFT);
+            }
+
+            if (txtArray.Count > 0)
+            {
+                _maxTxtWidth = txtArray.Max(r => r.Value.Width);
+                _maxTxtHeight = txtArray.Max(r => r.Value.Height);
+            }
+        }
+
+        /// <summary>
+        /// Initialization of all relevant Variables & Properties
+        /// </summary>
+        private void Init()
+        {
+            ShowMetrics = true;
+            ShowPoints = true;
+            ShowAppearance = true;
+            ShowEmojis = true;
+
+            InitializeHelperTools();
+
+            // Subscribe Classifier Updates & Call Method to initialize
+            DataManager.FaceWatcher.ClassifierUpdated += new EventHandler(FaceWatcher_ClassifierUpdated);
+            FaceWatcher_ClassifierUpdated(this, EventArgs.Empty);
+        }
+
+        /// <summary>
+        /// Initialize all Helper Tools that are needed for functionality of DrawingCanvas Class
+        /// </summary>
+        private void InitializeHelperTools()
+        {
+            _boundingBrush = new SolidColorBrush(Colors.LightGray);
+            _pointBrush = new SolidColorBrush(Colors.Cornsilk);
+            _emojiBrush = new SolidColorBrush(Colors.Black);
+            _pozMetricBrush = new SolidColorBrush(Colors.LimeGreen);
+            _negMetricBrush = new SolidColorBrush(Colors.Red);
+            _boundingPen = new Pen(_boundingBrush, 1);
+
+            NameToResourceConverter conv = new NameToResourceConverter();
+            _upperConverter = new UpperCaseConverter();
+            _metricTypeFace = Fonts.GetTypefaces((Uri)conv.Convert("Square", null, "ttf", null)).FirstOrDefault();
+
+            Faces = new Dictionary<int, Affdex.Face>();
+            _emojiImages = new Dictionary<Affdex.Emoji, BitmapImage>();
+            _appImgs = new Dictionary<string, BitmapImage>();
+
+            var emojis = Enum.GetValues(typeof(Affdex.Emoji));
+            foreach (int emojiVal in emojis)
+            {
+                BitmapImage img = LoadImage(emojiVal.ToString());
+                _emojiImages.Add((Affdex.Emoji)emojiVal, img);
+            }
+
+            var gender = Enum.GetValues(typeof(Affdex.Gender));
+            foreach (int genderVal in gender)
+            {
+                for (int g = 0; g <= 1; g++)
                 {
-                    FormattedText metricFT = new FormattedText((String)upperConverter.Convert(metric, null, null, null),
-                                                            System.Globalization.CultureInfo.CurrentCulture,
-                                                            System.Windows.FlowDirection.LeftToRight,
-                                                            metricTypeFace, metricFontSize, emojiBrush);
-                    txtArray.Add(metric, metricFT);
-
-                }
-
-                if (txtArray.Count > 0)
-                {
-                    maxTxtWidth = txtArray.Max(r => r.Value.Width);
-                    maxTxtHeight = txtArray.Max(r => r.Value.Height);
+                    string name = ConcatInt(genderVal, g);
+                    BitmapImage img = LoadImage(name);
+                    _appImgs.Add(name, img);
                 }
             }
         }
-        public double XScale { get; set; }
-        public double YScale { get; set; }
 
-        public bool DrawMetrics { get; set; }
-        public bool DrawPoints { get; set; }
-        public bool DrawEmojis { get; set; }
-        public bool DrawAppearance { get; set; }
-
-        private BitmapImage loadImage(string name, string extension="png")
+        /// <summary>
+        /// Load Image from resource-library
+        /// </summary>
+        /// <param name="name">name of image</param>
+        /// <param name="extension">image-suffig (default: png)</param>
+        /// <returns></returns>
+        private BitmapImage LoadImage(string name, string extension = "png")
         {
             NameToResourceConverter conv = new NameToResourceConverter();
             var pngURI = conv.Convert(name, null, extension, null);
@@ -221,27 +321,5 @@ namespace InstantImprovement.Visualization
             img.EndInit();
             return img;
         }
-
-        private string ConcatInt(int x, int y)
-        {
-            return String.Format("{0}{1}", x, y); 
-        }
-
-        private const int metricFontSize = 14;
-        private const int fpRadius = 2;
-        private const int margin = 5;
-        private double maxTxtWidth;
-        private double maxTxtHeight;
-        private Typeface metricTypeFace;
-        private SolidColorBrush boundingBrush;
-        private SolidColorBrush pozMetricBrush;
-        private SolidColorBrush negMetricBrush;
-        private SolidColorBrush pointBrush;
-        private SolidColorBrush emojiBrush;
-        private Pen boundingPen;
-        private UpperCaseConverter upperConverter;
-        private StringCollection metricNames;
-        private Dictionary<Affdex.Emoji, BitmapImage> emojiImages;
-        private Dictionary<string, BitmapImage> appImgs;
     }
 }
