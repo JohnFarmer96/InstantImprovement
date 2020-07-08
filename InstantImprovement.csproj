@@ -94,6 +94,7 @@
     <Compile Include="DataControl\DataManager.cs" />
     <Compile Include="DataControl\DataPayload.cs" />
     <Compile Include="DataControl\XLSExporter.cs" />
+    <Compile Include="Properties\Settings.Designer.cs" />
     <Compile Include="SDKControl\FaceWatcherEventArgs.cs" />
     <Compile Include="Visualization\DrawingCanvas.cs" />
     <Compile Include="SDKControl\NameToResourceConverter.cs" />
@@ -134,19 +135,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="C:\Projects\ProVIL\Properties\Settings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>C:\Projects\ProVIL\Settings.settings</DependentUpon>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-    </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>$(ProjectDir)Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="C:\Projects\ProVIL\Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>C:\Projects\ProVIL\Settings.Designer.cs</LastGenOutput>
-    </None>
     <AppDesigner Include="$(ProjectDir)Properties\" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

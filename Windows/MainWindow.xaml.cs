@@ -555,7 +555,7 @@ namespace InstantImprovement.Windows
         {
             try
             {
-                System.Diagnostics.Process.Start("https://www.google.com");
+                System.Diagnostics.Process.Start("https://github.com/JohnFarmer96/InstantImprovement");
             }
             catch
             {
