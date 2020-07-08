@@ -27,16 +27,16 @@ namespace InstantImprovement
             }
         }
 
-        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.ApplicationScopedSetting()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute(@"<?xml version=""1.0"" encoding=""utf-16""?>
 <ArrayOfString xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance"" xmlns:xsd=""http://www.w3.org/2001/XMLSchema"">
   <string>Joy</string>
-  <string>Sadness</string>
-  <string>Anger</string>
-  <string>Disgust</string>
+  <string>Engagement</string>
+  <string>EyeClosure</string>
+  <string>Attention</string>
   <string>Surprise</string>
-  <string>Fear</string>
+  <string>Disgust</string>
 </ArrayOfString>")]
         public global::System.Collections.Specialized.StringCollection Classifiers
         {
@@ -50,9 +50,9 @@ namespace InstantImprovement
             }
         }
 
-        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.ApplicationScopedSetting()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
         public bool ShowPoints
         {
             get
@@ -65,9 +65,9 @@ namespace InstantImprovement
             }
         }
 
-        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.ApplicationScopedSetting()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
         public bool ShowAppearance
         {
             get
@@ -80,7 +80,7 @@ namespace InstantImprovement
             }
         }
 
-        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.ApplicationScopedSetting()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
         public bool ShowEmojis
@@ -95,9 +95,9 @@ namespace InstantImprovement
             }
         }
 
-        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.ApplicationScopedSetting()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
         public bool ShowMetrics
         {
             get
