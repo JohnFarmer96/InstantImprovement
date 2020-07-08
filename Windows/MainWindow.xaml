@@ -145,8 +145,8 @@
                 <Button Name="LaunchVideo" Style="{StaticResource CustomButtonStyle}" VerticalAlignment="Top" Background="LightGray" Foreground="#575757" HorizontalAlignment="Right" Margin="0, 25, 40, 0" Padding="20,0,20,0" Content="Launch Demonstration Video" />
             </StackPanel>
             <StackPanel Name="authorInformation" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20, 10, 0, 0">
-                <Label Name="authorName" Content="© Jonathan Bauer - 2020" FontSize="20" FontFamily="Helvetica" FontWeight="ExtraLight" Foreground="#575757" Padding="0"/>
-                <Label Name="link" Content="More information: https://jonathanbauer.me" FontSize="13" FontFamily="Helvetica" FontWeight="ExtraLight" Foreground="#575757" Padding="0"/>
+                <Label Name="authorName" Content="© Jonathan Bauer - 2020" FontSize="20" FontFamily="Helvetica" FontWeight="ExtraLight" Foreground="#575757" Padding="0" MouseDoubleClick="RepoLink_Clicked"/>
+                <Label Name="link" Content="Double click here for more information" FontSize="13" FontFamily="Helvetica" FontWeight="ExtraLight" Foreground="#575757" Padding="0" MouseDoubleClick="RepoLink_Clicked"/>
             </StackPanel>
             <StackPanel VerticalAlignment="Bottom" Margin="0,0,0,60">
                 <Label Name="affdexLabel" Content="This Application was built with Affdex SDK" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="40" FontFamily="Helvetica" FontWeight="ExtraLight" Foreground="#575757"/>

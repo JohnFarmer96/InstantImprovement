@@ -101,12 +101,15 @@ namespace InstantImprovement.DataControl
         {
             foreach (String item in FaceWatcher.EnabledClassifiers)
             {
-                RingBuffers.Add(item, new RingBuffer(RingBufferCapacity));
+                if(!RingBuffers.ContainsKey(item))
+                {
+                    RingBuffers.Add(item, new RingBuffer(RingBufferCapacity));
+                }
             }
         }
 
         /// <summary>
-        ///
+        /// Local Name Mappings for Feature-Classifiers
         /// </summary>
         /// <param name="classifierName"></param>
         /// <returns></returns>

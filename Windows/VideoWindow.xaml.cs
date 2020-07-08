@@ -174,9 +174,12 @@ namespace InstantImprovement.Windows
         /// <param name="e"></param>
         private void VideoWindow_Closing(object sender, CancelEventArgs e)
         {
-            _videoWindowActive = false;
             DataManager.FaceWatcher.StopDetector();
             ChartAnimationThread.Abort();
+            DataManager.FaceWatcher.DetectorStarted -= StartVideo;
+            DataManager.FaceWatcher.DetectorStopped -= PauseVideo;
+            DataManager.FaceWatcher.ImageReceived -= ExtractData;
+            _videoWindowActive = false;
         }
 
         /// <summary>

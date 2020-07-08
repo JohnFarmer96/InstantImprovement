@@ -4,10 +4,9 @@
         xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
         xmlns:InstantImprovement="clr-namespace:InstantImprovement;assembly="
         Title="Instant Improvement - Video Demonstration" 
-        Height="720" Width="1280"
-        MinHeight="640" MinWidth="480"
-        MaxHeight="720" MaxWidth="1280"
-        ResizeMode="NoResize"
+        MinHeight="700" MinWidth="1300"
+        Height="700" Width="1300"
+        ResizeMode="CanResize"
         Loaded="VideoWindow_Loaded"
         Closing="VideoWindow_Closing">
 

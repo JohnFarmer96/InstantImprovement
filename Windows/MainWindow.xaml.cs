@@ -545,5 +545,22 @@ namespace InstantImprovement.Windows
             canvas.ShowAppearance = ShowAppearance;
             ChangeButtonStyle((Button)sender, ShowAppearance);
         }
+
+        /// <summary>
+        /// Open Repository-Link
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void RepoLink_Clicked(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            try
+            {
+                System.Diagnostics.Process.Start("https://www.google.com");
+            }
+            catch
+            {
+
+            }
+        }
     }
 }
